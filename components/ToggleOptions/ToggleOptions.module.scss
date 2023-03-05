@@ -1,0 +1,27 @@
+@import '@/styles/variables.scss';
+
+.container {
+    width: 100%;
+    display: flex;
+    border:1px solid black;
+    width: fit-content;
+    border-radius: 30px;
+
+    .optionItem {
+        padding : 3px 15px;
+        font-size: 16px;
+        background-color: transparent;
+        color:black;
+        border:none;
+        outline: none;
+        border-radius: 30px;
+        transition: background-color .5s ease;
+        cursor: pointer;
+    }
+
+    .isActive {
+        background-color: $header-background-color;
+        color : rgb(69,221,178);
+        transition: background-color .5s ease;
+    }
+}
