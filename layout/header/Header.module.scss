@@ -38,6 +38,7 @@
 
                     .menuChildItem{
                         padding : 5px 40px 5px 20px;
+                        cursor: pointer;
 
                         &:hover {
                             background-color: rgb(241, 241, 241);
@@ -49,6 +50,7 @@
                     font-size: 16px;
                     color : white;
                     cursor: pointer;
+                    
                 }
             }
         }
