@@ -75,11 +75,11 @@ const Footer = () => {
 
     const renderFooterMenu = () => {
         return footerMenu.map(item => {
-           return <div className={styles.footerMenu}>
+           return <div className={styles.footerMenu} key={item.name}>
                 <a className={styles.footerItemTitle}>{item.name}</a>
                 <ul className={styles.footerItemList}>
                     {item.children.map(childItem =>
-                       {return <li className={styles.footerItem} >{childItem.name}</li>}
+                       {return <li className={styles.footerItem} key={childItem.name}>{childItem.name}</li>}
                     )}
                 </ul>
             </div>
