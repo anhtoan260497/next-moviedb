@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosClient = axios.create({
-  baseUrl: process.env.BASE_URL_MOVIEDB,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB,
   headers : {
     'Content-Type' : 'application/json'
   }

@@ -1,0 +1,20 @@
+.container {
+    width: 1200px;
+    margin-top: 10px;
+    overflow: scroll;
+    height: 330px;
+
+    &::-webkit-scrollbar {
+        display: none;
+      }
+
+
+    .scrollContainer {
+
+        width: fit-content;
+        display: flex;
+        gap : 20px;
+        height: 100%;
+        
+    }
+}
