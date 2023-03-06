@@ -1,13 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {toggleSlice} from '@/features/ToggleSlice'
+import {movieSlice} from '@/features/MovieSlice';
 
 const reducers = combineReducers({
-   toggleSlice : toggleSlice.reducer
+   toggleSlice : toggleSlice.reducer,
+   movieSlice : movieSlice.reducer
 })
 
 const store = configureStore({
     reducer : reducers,
     devTools : true,
+
 })
 
 export default store

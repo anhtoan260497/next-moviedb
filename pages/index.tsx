@@ -6,7 +6,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 
-interface MovieList {
+export interface MovieList {
   adult: boolean,
   backdrop_path: string,
   genres_ids: Number[],
@@ -19,7 +19,7 @@ interface MovieList {
   release_date: string,
   title: string,
   video: boolean,
-  vote_avarage: number,
+  vote_average: number,
   vote_count: number,
 }
 
@@ -31,10 +31,10 @@ interface dataProps {
 export default function Home({ dataMovieList }: dataProps) {
   const firstSlideOptions = [{
     name: 'Today',
-    id: 'today'
-  },{
+    id: 'day'
+  }, {
     name: 'This week',
-    id: 'thisWeek'
+    id: 'week'
   }]
   return (
     <>
@@ -44,23 +44,25 @@ export default function Home({ dataMovieList }: dataProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     { dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[Math.round(Math.random() * dataMovieList.length)].backdrop_path} />}
+      {dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[0].backdrop_path} />}
       <HomepageSlideOptions options={firstSlideOptions} />
     </>
   )
 }
 
 export const getStaticProps: GetStaticProps<dataProps> = async () => {
-  try {const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}/movie/popular?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=${1}`)
-  const data = await result.json()
-  return {
-    props: {
-      dataMovieList: data.results
-    }
-  }}catch (err) {
+  try {
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}/movie/popular?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=${1}`)
+    const data = await result.json()
     return {
-      props : {
-        dataMovieList : []
+      props: {
+        dataMovieList: data.results
+      }
+    }
+  } catch (err) {
+    return {
+      props: {
+        dataMovieList: []
       }
     }
   }
