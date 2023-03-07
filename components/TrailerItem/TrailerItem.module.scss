@@ -1,0 +1,43 @@
+.container {
+    width: 300px;
+    height: 160px;
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    gap : 5px;
+   
+    .posterContainer {
+        position: relative;
+        transition: transform .4s ease;
+
+        &:hover {
+            transform: scale(1.05);
+            transition: transform .4s ease;
+
+            .playButton{
+                transform: scale(1.05);
+                transition: transform .4s ease;
+            }
+        }
+
+        .poster {
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+
+        .playButton {
+            position: absolute;
+            left: calc(50% - 30px);
+            top : calc(50% - 30px);
+            color : white;
+            fill: white;
+            filter: invert(1);
+            transition: transform .4s ease; 
+            cursor: pointer;
+        }
+    }
+}

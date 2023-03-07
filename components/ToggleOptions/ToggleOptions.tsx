@@ -9,9 +9,9 @@ import { Options } from "../HomepageSlideOptions/HomepageSlideOptions";
 import styles from './ToggleOptions.module.scss'
 
 
-const ToggleOptions = ({ options, type }: Options) => {
+const ToggleOptions = ({ options, type, isTrailerToggle }: Options) => {
 
-    const choose = useSelector<RootState, string | void>(state => type === 'trending' ? state.toggleSlice.chooseTrending  : state.toggleSlice.choosePopular)
+    const choose = useSelector<RootState, string | void>(state => type === 'trending' ? state.toggleSlice.chooseTrending  : type === 'trailers' ?  state.toggleSlice.chooseTrailers : state.toggleSlice.choosePopular)
     const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
     useEffect(() => {
@@ -36,18 +36,22 @@ const ToggleOptions = ({ options, type }: Options) => {
         if(type === 'popular'){
             dispatch(getPopular(id))
         }
+
+        if(type === 'trailers'){
+
+        }
     }
 
 
 
     const renderToggleButton = () => {
         return options.map((item, key) => {
-            return <button className={clsx(styles.optionItem, item.id === choose ? styles.isActive : '')} key={key} onClick={() => handleClickChoose(item.id)}>{item.name}</button>
+            return <button className={clsx(styles.optionItem, item.id === choose ? styles.isActive : '',isTrailerToggle && styles.trailers, isTrailerToggle && item.id === choose && styles.isActiveTrailer )} key={key} onClick={() => handleClickChoose(item.id)}>{item.name}</button>
         })
     }
 
     return (
-        <div className={styles.container}>
+        <div className={clsx(styles.container,isTrailerToggle && styles.containerTrailer)}>
             {renderToggleButton()}
         </div>
     )
