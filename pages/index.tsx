@@ -36,6 +36,16 @@ export default function Home({ dataMovieList }: dataProps) {
     name: 'This week',
     id: 'week'
   }]
+
+
+  const secondSlideOptions = [{
+    name: 'On TV',
+    id: 'tv'
+  }, {
+    name: 'In Theaters',
+    id: 'movie'
+  }]
+  
   return (
     <>
       <Head>
@@ -45,7 +55,8 @@ export default function Home({ dataMovieList }: dataProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[0].backdrop_path} />}
-      <HomepageSlideOptions options={firstSlideOptions} />
+      <HomepageSlideOptions type='trending' options={firstSlideOptions} title={'Trending'} />
+      <HomepageSlideOptions type='popular' options={secondSlideOptions} title={"What's Popular"} />
     </>
   )
 }
