@@ -1,6 +1,7 @@
 import getListMovie from '@/api/getListMovie'
 import HomepageSearch from '@/components/HomepageSearch/HomepageSearch'
 import HomepageSlideOptions from '@/components/HomepageSlideOptions/HomepageSlideOptions'
+import HomepageTrailers from '@/components/HomepageTrailers/HomepageTrailers'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -58,6 +59,7 @@ export default function Home({ dataMovieList }: dataProps) {
       </Head>
       {dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[Math.floor(dataMovieList.length * Math.random())].backdrop_path} />}
       <HomepageSlideOptions type='trending' options={firstSlideOptions} title={'Trending'} />
+      <HomepageTrailers />
       <HomepageSlideOptions type='popular' options={secondSlideOptions} title={"What's Popular"} />
     </>
   )

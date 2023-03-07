@@ -19,9 +19,22 @@
         cursor: pointer;
     }
 
+    .trailers {
+        color:white;
+    }
+
     .isActive {
         background-color: $header-background-color;
         color : rgb(69,221,178);
         transition: background-color .5s ease;
     }
+
+    .isActiveTrailer {
+        background-color: rgb(179,250,202);
+        color : black;
+    }
+}
+
+.containerTrailer {
+    border: 1px solid rgb(69,221,178);
 }

@@ -1,5 +1,5 @@
 import { RootState } from "@/store/store";
-import React, { useEffect, useRef, useState } from "react";
+import React, { CSSProperties, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import Loader from "../Loader/Loader";
 import MovieSlide from "../MoviesSlide/MovieSlide";
@@ -9,7 +9,8 @@ import styles from './HomepageSlideOptions.module.scss'
 export interface Options {
     options: OptionItem[],
     title ?: string,
-    type : string
+    type : string,
+    isTrailerToggle ?: boolean
 }
 
 export interface OptionItem {
