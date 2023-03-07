@@ -18,7 +18,10 @@ function ModalVideo() {
 
     return (
         <div className={styles.container}>
-            <div className={styles.closeButton}><button className={styles.closeIcon} onClick={handleClickClose}><Icon component={CloseIcon} /></button></div>
+            <div className={styles.closeButton}>
+                <p className={styles.title}>The Last of Us Trailer</p>
+                <button className={styles.closeIcon} onClick={handleClickClose}><Icon component={CloseIcon} /></button>
+                </div>
             <iframe className={styles.video} src="https://www.youtube.com/embed/8SWhBsbxmpk" title="The Last of Us | Opening Credits | HBO Max" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
     );
