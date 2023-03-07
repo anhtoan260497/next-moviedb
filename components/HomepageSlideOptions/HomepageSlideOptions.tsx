@@ -28,7 +28,7 @@ const isLoading:any = useSelector<RootState>(state => type === 'trending' ? stat
             <p className={styles.title}>{title}</p>
             <ToggleOptions type={type} options={options} />
         </div>
-        {!isLoading ? <MovieSlide type={type} /> : <Loader style={{marginTop:'calc(160px / 2)'}}/>}
+        {!isLoading ? <MovieSlide type={type} /> : <div className={styles.containerLoader}></div>}
     </div>
  )
 }
