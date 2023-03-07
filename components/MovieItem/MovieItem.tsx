@@ -22,7 +22,7 @@ function MovieItem({ poster, voteAverage, name, date }: MovieItemProps) {
         <div className={styles.container}>
             <Image className={styles.poster} src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster}`} alt='icon' width={150} height={150} />
             <div className={styles.progressContainer}>
-                <CircularProgress variant="determinate" value={Math.round(voteAverage * 10)} thickness={3} size={35} sx={{ position: 'absolute', bottom: '-10px', left: '10px', color: progressColor(70), backgroundColor: 'rgb(8,28,34)', borderRadius: '50%' }} />
+                <CircularProgress variant="determinate" value={Math.round(voteAverage * 10)} thickness={3} size={35} sx={{ position: 'absolute', bottom: '-10px', left: '10px', color: progressColor(voteAverage * 10), backgroundColor: 'rgb(8,28,34)', borderRadius: '50%' }} />
                 <p className={styles.processPercent}>{Math.round(voteAverage * 10)}%</p>
             </div>
 

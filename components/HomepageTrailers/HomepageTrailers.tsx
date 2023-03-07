@@ -12,7 +12,7 @@ function HomepageTrailers() {
             name: 'On TV'
         }, {
             id: 'movie',
-            name: 'Theaters'
+            name: 'In Theaters'
         }]
        
     return (

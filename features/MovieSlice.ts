@@ -37,10 +37,15 @@ export const movieSlice = createSlice({
     isLoadingPopular: false,
     isError: false,
     isErrorPopular: false,
+    isModalTrailers : false,
     trending: [],
     popular: [],
   },
-  reducers: {},
+  reducers: {
+    setModalTrailers(state,action){
+      state.isModalTrailers = action.payload
+    }
+  },
 
   extraReducers: (builder) => {
     builder.addCase(getTrending.pending, (state, action) => {
@@ -68,5 +73,5 @@ export const movieSlice = createSlice({
   },
 });
 
-export const {} = movieSlice.actions;
+export const {setModalTrailers} = movieSlice.actions;
 export default movieSlice.reducer;
