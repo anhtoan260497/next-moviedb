@@ -14,9 +14,11 @@ function MovieSlide({ type }: MovieSlideType) {
     const movies: any = useSelector<RootState>(state => type === 'trending' ? state.movieSlice.trending : state.movieSlice.popular)
     const containerRef = useRef<HTMLInputElement>(null)
     const renderMovieItem = () => {
-        return movies.map((item: MovieList) => <MovieItem key={item.id} poster={item.poster_path} date={item.release_date}
-            name={item.original_title} voteAverage={item.vote_average} />)
+        return movies.map((item: MovieList) => <MovieItem key={item.id} poster={item.poster_path} date={item.release_date || item.first_air_date}
+            name={item.original_title || item.original_name} voteAverage={item.vote_average} />)
     }
+
+    console.log(movies)
 
     useEffect(() => {
         setTimeout(() => {
