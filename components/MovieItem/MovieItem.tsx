@@ -6,12 +6,13 @@ import styles from './MovieItem.module.scss'
 interface MovieItemProps {
     poster: string,
     voteAverage: number,
-    name: string,
-    date: string
+    name : string,
+    date : string
 }
 
 function MovieItem({ poster, voteAverage, name, date }: MovieItemProps) {
     
+    console.log(date)
 
     const progressColor = (value: number) => {
         if (value < 30) return 'rgb(239,35,96)'
