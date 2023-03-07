@@ -56,7 +56,7 @@ export default function Home({ dataMovieList }: dataProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[0].backdrop_path} />}
+      {dataMovieList.length > 0 && <HomepageSearch backgroundImage={dataMovieList[Math.floor(dataMovieList.length * Math.random())].backdrop_path} />}
       <HomepageSlideOptions type='trending' options={firstSlideOptions} title={'Trending'} />
       <HomepageSlideOptions type='popular' options={secondSlideOptions} title={"What's Popular"} />
     </>
