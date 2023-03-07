@@ -18,8 +18,6 @@ function MovieSlide({ type }: MovieSlideType) {
             name={item.original_title || item.original_name} voteAverage={item.vote_average} />)
     }
 
-    console.log(movies)
-
     useEffect(() => {
         setTimeout(() => {
             if (containerRef.current != null) {

@@ -8,7 +8,6 @@ export const toggleSlice = createSlice({
   },
   reducers: {
     setChooseStore(state, action) {
-      console.log(action);
       if (action.payload.type === "trending") state.chooseTrending = action.payload.value;
       if (action.payload.type === "popular") state.choosePopular = action.payload.value;
     },

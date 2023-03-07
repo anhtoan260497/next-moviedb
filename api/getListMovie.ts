@@ -8,7 +8,6 @@ const getListMovie = {
     },
     getTrending : (type:string,timeWindow ?: string ) => {
         const url = `/trending/${type}/${timeWindow}?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}`
-        console.log(url)
         return axiosClient.get(url)
     }
 }

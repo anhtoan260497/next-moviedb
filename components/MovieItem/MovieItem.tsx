@@ -11,8 +11,6 @@ interface MovieItemProps {
 }
 
 function MovieItem({ poster, voteAverage, name, date }: MovieItemProps) {
-    
-    console.log(date)
 
     const progressColor = (value: number) => {
         if (value < 30) return 'rgb(239,35,96)'
