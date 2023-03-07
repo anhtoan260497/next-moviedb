@@ -27,7 +27,7 @@ const HomepageTrending = ({options}:Options,listfilm : string[]) => {
             <p className={styles.title}>Trending</p>
             <ToggleOptions options={options} />
         </div>
-        {!isLoading ? <MovieSlide /> : <Loader  />}
+        {!isLoading ? <MovieSlide /> : <Loader style={{marginTop:'calc(160px / 2)'}}/>}
     </div>
  )
 }

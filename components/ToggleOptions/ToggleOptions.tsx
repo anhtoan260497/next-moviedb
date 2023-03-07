@@ -28,6 +28,7 @@ const ToggleOptions = ({ options }: Options) => {
     }, [])
 
     const handleClickChoose = (id: string) => {
+        if(choose === id) return 
         dispatch(setChooseStore(id))
         dispatch(getTrending(id))
     }
