@@ -1,8 +1,9 @@
 .container {
     overflow-x: scroll;
-    height: 260px;
+    height: 300px;
     position: relative;
     z-index: 3;
+    opacity: 0;
 
     &::-webkit-scrollbar {
         height: 8px;
@@ -23,5 +24,12 @@
         display: flex;
         gap : 20px;
         margin: 20px;
+        
     }
+
+}
+
+.active {
+    opacity: 1;
+    transition: opacity 1s ease;
 }
