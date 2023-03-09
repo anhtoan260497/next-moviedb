@@ -38,3 +38,44 @@
 .containerTrailer {
     border: 1px solid rgb(69,221,178);
 }
+
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 100%;
+        display: flex;
+        border:1px solid black;
+        width: fit-content;
+    
+        .optionItem {
+            padding : 3px 15px;
+            font-size: 16px;
+            background-color: transparent;
+            color:black;
+            border:none;
+            outline: none;
+            border-radius: 30px;
+            transition: background-color .5s ease;
+            cursor: pointer;
+        }
+    
+        .trailers {
+            color:white;
+        }
+    
+        .isActive {
+            background-color: $header-background-color;
+            color : rgb(69,221,178);
+            transition: background-color .5s ease;
+        }
+    
+        .isActiveTrailer {
+            background-color: rgb(179,250,202);
+            color : black;
+        }
+    }
+    
+    .containerTrailer {
+        border: 1px solid rgb(69,221,178);
+    }
+}

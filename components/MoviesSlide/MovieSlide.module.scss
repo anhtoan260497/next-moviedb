@@ -35,3 +35,12 @@
     opacity: 1;
     transition: opacity 1s ease;
 }
+
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 100%;
+        padding-left: 20px;
+        height: 360px;
+    }
+}

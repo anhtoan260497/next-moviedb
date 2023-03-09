@@ -40,3 +40,38 @@
         height: 600px;
     }
 }
+
+@media only screen and (max-width : 768px) {
+    .container {
+    
+    
+        .closeButton {
+            width: 90%;
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            color :white;
+            padding : 0 10px;
+            background-color: black;
+            
+    
+            .title {
+                font-size: 20px;
+            }
+    
+            .closeIcon {
+                width: 30px;
+                height: 30px;
+                border:none;
+                font-size: 20px;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+    
+        .video {
+            width: 90%;
+            height: 300px;
+        }
+    }
+}

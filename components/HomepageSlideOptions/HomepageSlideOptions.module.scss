@@ -25,3 +25,29 @@
         width: 100%;
     }
 }
+
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 100%;
+        margin-top: 20px;
+
+        .optionsContainer{
+            width: calc((100% / 12) * 12);
+            display: flex;
+            align-items: center;
+            gap : 10px;
+            margin : 20px 0 0 20px;
+    
+            .title {
+                font-size: 22px;
+                font-weight: 600;
+            }
+        }
+    
+        .containerLoader {
+            height: 390px;
+            width: 100%;
+        }
+    }
+}
