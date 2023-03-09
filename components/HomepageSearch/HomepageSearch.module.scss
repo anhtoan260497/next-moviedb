@@ -27,6 +27,10 @@
     .HomepageSearchInput {
         position: relative;
 
+        .mobile{
+            display: none;
+        }
+
 
         .HomepageSearchInputField {
             width: 100%;
@@ -64,5 +68,61 @@
             }
         }
     }
+}
 
+@media only screen and (max-width : 768px) {
+    .homepageSearchContainer {
+        height: 100%;
+        width: 100%;
+        top : 64px;
+        padding-top : 10px;
+        position: relative;
+        justify-content: flex-start;
+    
+        .homepageSearchTitle {
+            
+            .homepageSearchTitleFirst {
+                font-size: 44px;
+            }
+    
+            .homepageSearchTitleSecond {
+                font-size: 30px;
+            }
+        }
+    
+        .HomepageSearchInput {
+
+            .mobile {
+                display: block;
+            }
+
+            .desktop {
+                display: none;
+            }
+    
+            .HomepageSearchInputField {
+                width: 100%;
+                height: 46px;
+                background-color: white;
+                line-height: 46px;
+                font-size: 1.1em;
+                color: rgba(0,0,0,0.5);
+                border: none;
+                border-radius: 30px;
+                padding: 10px 20px;
+    
+                &:focus {
+                    border:none;
+                    outline:none;
+                }
+            }
+    
+            .HomepageSearchButton {
+                top : 0;
+                &:hover {
+                    color :black;
+                }
+            }
+        }
+    }
 }

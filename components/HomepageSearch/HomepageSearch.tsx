@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { ChangeEvent, useState } from 'react';
 import styles from './HomepageSearch.module.scss'
 
@@ -24,7 +25,8 @@ function HomepageSearch({ backgroundImage }: HomepageSearchData) {
             </div>
 
             <div className={styles.HomepageSearchInput}>
-                <input className={styles.HomepageSearchInputField} onChange={e => hanleChangeValue(e)} placeholder='Search for a movie, tv show, person...' />
+                <input className={clsx(styles.HomepageSearchInputField,styles.desktop)} onChange={e => hanleChangeValue(e)} placeholder='Search for a movie, tv show, person...' />
+                <input className={clsx(styles.HomepageSearchInputField,styles.mobile)} onChange={e => hanleChangeValue(e)} placeholder='Search...' />
                 <button className={styles.HomepageSearchButton}>Search</button>
             </div>
         </div>
