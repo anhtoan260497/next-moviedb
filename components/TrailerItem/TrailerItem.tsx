@@ -8,7 +8,6 @@ import styles from './TrailerItem.module.scss'
 
 function TrailerItem({ poster_path, name, video_name, path, id }: TrailerItems) {
     const dispatch = useDispatch()
-    const router =  useRouter()
 
     const handleClickTrailer = () => {
         dispatch(setModalTrailers(true))

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import Image from "next/image";
+import { Icon } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
+import clsx from "clsx";
 
 const Header = () => {
 
@@ -66,6 +69,7 @@ const Header = () => {
   }]
 
   const [hoverItem, setHoverItem] = useState(-1)
+  const [isShowMobileMenu, setIsShowMobileMenu] = useState(false)
 
   const renderMenuItem = () => {
     return menu.map(item => {
@@ -73,11 +77,24 @@ const Header = () => {
         <div className={styles.menuItem} key={item.id}>
           <a className={styles.menuItemTitle} onMouseEnter={() => setHoverItem(item.id)}>{item.name}</a>
           {hoverItem === item.id ? <ul className={styles.menuChildItemList} onMouseEnter={()=>setHoverItem(item.id)} onMouseLeave={()=>setHoverItem(-1)}>
-            {item.children.map(childItem => {
+            {item.children.map((childItem) => {
               return <li className={styles.menuChildItem} key={childItem.name}><a>{childItem.name}</a></li>
             })}
           </ul> : ''}
         </div>
+      )
+    })
+  }
+
+  const renderMenuItemMobile = () => {
+    return menu.map(item => {
+      return (
+        <div className={styles.options} key={item.id}>
+        <button className={styles.title}>{item.name}</button>
+        <ul className={styles.listChildItem}>
+          {item.children.map((childItem,key) =>  <li className={styles.childItem} key={key}>{childItem.name}</li>)}
+        </ul>
+      </div>
       )
     })
   }
@@ -99,7 +116,19 @@ const Header = () => {
           </div>
 
         </div>
+
+        <div className={styles.containerMobile}>
+          <button className={styles.left} onClick={()=>setIsShowMobileMenu(!isShowMobileMenu)}><Icon style={{fill:'white'}} component={MenuIcon}/></button>
+          <Image src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' width={50} height={40} alt="moviedb icon"/>
+          <div className={styles.right}></div>
+        </div>
       </div>
+
+      <div className={clsx(styles.menuMobileContainer,isShowMobileMenu && styles.isActive)}>
+        <div className={styles.clear}></div>
+        {renderMenuItemMobile()}
+      </div>
+      
     </div>
   );
 };
