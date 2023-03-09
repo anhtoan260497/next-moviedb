@@ -15,7 +15,7 @@ function MovieSlide({ type }: MovieSlideType) {
     const containerRef = useRef<HTMLInputElement>(null)
     const renderMovieItem = () => {
         return movies.map((item: MovieList) => <MovieItem key={item.id} poster={item.poster_path} date={item.release_date || item.first_air_date}
-            name={item.original_title || item.original_name} voteAverage={item.vote_average} />)
+            name={item.original_title || item.original_name} voteAverage={item.vote_average} type={item.media_type} id={item.id} />)
     }
 
     useEffect(() => {

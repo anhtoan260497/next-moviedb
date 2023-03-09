@@ -1,5 +1,7 @@
+import { progressColor } from '@/helper';
 import { CircularProgress } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
 import styles from './MovieItem.module.scss'
 
@@ -8,19 +10,15 @@ interface MovieItemProps {
     voteAverage: number,
     name : string,
     date : string
+    type : string,
+    id : number
 }
 
-function MovieItem({ poster, voteAverage, name, date }: MovieItemProps) {
-
-    const progressColor = (value: number) => {
-        if (value < 30) return 'rgb(239,35,96)'
-        if (value >= 30 && value < 70) return 'rgb(211,213,48)'
-        if (value >= 70) return 'rgb(33,208,122)'
-    }
+function MovieItem({ poster, voteAverage, name, date,type = 'tv' , id}: MovieItemProps) {
 
     return (
         <div className={styles.container}>
-            <Image className={styles.poster} src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster}`} alt='icon' width={150} height={150} />
+            <a href={`${type}/${id}`}><Image className={styles.poster} src={`https://image.tmdb.org/t/p/w440_and_h660_face${poster}`} alt='icon' width={150} height={150} /></a>
             <div className={styles.progressContainer}>
                 <CircularProgress variant="determinate" value={Math.round(voteAverage * 10)} thickness={3} size={35} sx={{ position: 'absolute', bottom: '-10px', left: '10px', color: progressColor(voteAverage * 10), backgroundColor: 'rgb(8,28,34)', borderRadius: '50%' }} />
                 <p className={styles.processPercent}>{Math.round(voteAverage * 10)}%</p>
