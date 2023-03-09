@@ -12,7 +12,6 @@ function HomepageTrailers() {
     const hoverTrailerItem = useSelector<RootState, TrailerItems>(state => state.movieSlice.hoverTrailerItem)
     const trailerItems:any = useSelector<RootState>(state => state.movieSlice.trailers)
     const choose = useSelector<RootState, string>(state => state.toggleSlice.chooseTrailers)
-    console.log(choose)
 
     const [style, setStyle] = useState({})
 
