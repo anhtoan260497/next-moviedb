@@ -55,3 +55,37 @@
        }
     }
 }
+
+@media only screen and (max-width : 768px) {
+    .containerFluid {
+        padding : 20px 0 60px 20px;
+        height: auto;
+    
+        .container {
+           width: 100%;
+           margin: auto;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-around;
+    
+           .leftContainer {
+            align-items: flex-start;
+            width: 100%;
+
+            .image{
+                display: none;
+            }
+    
+            .joinCommunityButton {
+                margin-bottom: 20px;
+            }
+           }
+    
+           .rightContainer {
+            flex-direction: column;
+            gap : 30px;
+
+           }
+        }
+    }
+}

@@ -91,7 +91,7 @@ const Footer = () => {
         <div className={styles.containerFluid}>
             <div className={styles.container}>
                 <div className={styles.leftContainer}>
-                    <Image src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="icon" width={130} height={94} />
+                    <Image className={styles.image} src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="icon" width={130} height={94} />
                     <a className={styles.joinCommunityButton}>JOIN THE COMMUNITY</a>
                 </div>
                 <div className={styles.rightContainer}>
