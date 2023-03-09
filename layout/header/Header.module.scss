@@ -56,9 +56,14 @@
         }
     }
 
+    .menuMobileContainer {
+        display: none;
+
+    }
+
     .containerMobile {
         display: none;
-    }
+       }
 }
 
 @media only screen and (max-width : 768px) {
@@ -102,6 +107,7 @@
             padding-left: 20px;
             color  :white;
             transition: left .5s ease;
+            display: block;
 
             .clear {
                 height: 10px;
