@@ -7,5 +7,5 @@ export const progressColor = (value: number) => {
 export const calculateRuntime = (value : number):string => {
     const hour = Math.floor(value / 60) 
     const minute = value - (hour * 60)
-    return `${hour}h ${minute}m`
+    return hour ? `${hour}h ${minute}m` : `${minute}m`
 }

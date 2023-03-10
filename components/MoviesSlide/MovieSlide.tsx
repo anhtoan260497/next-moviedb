@@ -12,10 +12,12 @@ interface MovieSlideType {
 function MovieSlide({ type }: MovieSlideType) {
 
     const movies: any = useSelector<RootState>(state => type === 'trending' ? state.movieSlice.trending : state.movieSlice.popular)
+    const choose = useSelector<RootState, string>(state => type === 'trending' ? state.toggleSlice.chooseTrending : state.toggleSlice.choosePopular ) 
     const containerRef = useRef<HTMLInputElement>(null)
+    console.log(type, movies)
     const renderMovieItem = () => {
         return movies.map((item: MovieList) => <MovieItem key={item.id} poster={item.poster_path} date={item.release_date || item.first_air_date}
-            name={item.original_title || item.original_name} voteAverage={item.vote_average} type={item.media_type} id={item.id} />)
+            name={item.original_title || item.original_name} voteAverage={item.vote_average} type={item.media_type ? item.media_type : choose === 'movie' ? 'movie' : 'tv' } id={item.id} />)
     }
 
     useEffect(() => {
