@@ -77,19 +77,19 @@ export interface CrewItem {
   profile_path: string | null;
 }
 
-export interface CastItem {
-  adult: boolean;
-  cast_id: number;
-  character: string;
-  credit_id: string;
-  gender: number;
-  id: number;
-  known_for_department: string;
-  name: string;
-  order: number;
-  original_name: string;
-  popularity: number;
-  profile_path: string;
+export interface CastItemInterface {
+  adult ?: boolean;
+  cast_id ?: number;
+  character ?: string;
+  credit_id ?: string;
+  gender ?: number;
+  id ?: number;
+  known_for_department ?: string;
+  name ?: string;
+  order ?: number;
+  original_name ?: string;
+  popularity ?: number;
+  profile_path ?: string;
 }
 
 interface MovieInfoSliceData {
@@ -98,7 +98,7 @@ interface MovieInfoSliceData {
   isErrorMovieInfo: boolean;
   isLoading: boolean;
   crew: CrewItem[];
-  cast: CastItem[];
+  cast: CastItemInterface[];
 }
 
 export interface VideoItem {

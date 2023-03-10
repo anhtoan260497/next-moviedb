@@ -1,0 +1,38 @@
+.container {
+    width: 100%;    
+    height: 340px;
+
+    .title {
+        font-size: 20px;
+        margin : 10px auto;
+        font-weight: 600;
+    }
+
+    .castContainer{
+        width: 100%;
+        height: 295px;
+        display: flex;
+        overflow-x: scroll;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+        }
+    
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 1px grey;
+            border-radius: 10px;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: rgb(219, 219, 219);
+            border-radius: 10px;
+        }
+
+        .castContainerScroll {
+            display: flex;
+            gap : 10px;
+            padding : 0 20px 20px 5px;
+            
+        }
+    }
+}

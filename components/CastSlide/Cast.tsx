@@ -1,10 +1,30 @@
+import {CastItemInterface } from '@/features/MovieInfoSlice';
+import { RootState } from '@/store/store';
 import React from 'react';
-import styles from 'Cast.module.scss'
+import { useSelector } from 'react-redux';
+import CastItem from '../CastItem/CastItem';
+import styles from './Cast.module.scss'
 
 function Cast() {
+
+    const cast = useSelector<RootState, CastItemInterface[]>(state => state.movieInfoSlice.cast)
+
+    const renderCastItem = () => {
+       return cast.map((item:CastItemInterface) => {
+            return <CastItem profile_path={item.profile_path}  character={item.character || item.original_name} name={item.name}/>
+        })
+    }
+
+    console.log(cast)
+
     return (
-        <div>
-            Cast Slide
+        <div className={styles.container}>
+            <p className={styles.title}>Series Cast</p>
+            <div className={styles.castContainer}> 
+                <div className={styles.castContainerScroll}>
+                   {renderCastItem()}
+                </div>
+            </div>
         </div>
     );
 }

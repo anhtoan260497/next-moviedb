@@ -1,0 +1,22 @@
+.container {
+    width: 130px;
+    height: 280px;
+    border-radius: 10px;
+    overflow : hidden;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    padding-bottom : 10px; 
+
+    .actorName {
+        font-weight: 600;
+        margin : 5px;
+    }
+
+    .characterName {
+        font-size: 14px;
+        margin : 5px;
+    }
+
+    .episode {
+        margin : 5px; 
+    }
+}

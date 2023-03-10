@@ -6,6 +6,7 @@ import { setMovieInfo } from '@/features/MovieInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalVideo from '@/components/ModalVideo/ModalVideo';
 import { RootState } from '@/store/store';
+import MovieDetailContent from '@/components/MovieDetailContent/MovieDetailContent';
 
 function MovieDetail(props: any) {
     const modalTrailers = useSelector<RootState, boolean>(state => state.movieSlice.isModalTrailers)
@@ -24,15 +25,7 @@ function MovieDetail(props: any) {
             </Head>
             <div>
                 <MovieDetailHeader />
-                <div style={{display:'flex',gap : '10px'}}>
-                    <div style={{width : 'calc((100% / 12) * 8) ',border:'1px solid blue'}}>
-
-                    </div>
-
-                    <div style={{width : 'calc((100% / 12) * 4)',border:'1px solid red'}}>
-
-                    </div>
-                </div>
+                <MovieDetailContent />
             </div>
             {modalTrailers && <ModalVideo />}
         </>
