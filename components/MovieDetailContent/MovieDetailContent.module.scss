@@ -1,0 +1,14 @@
+.container {
+    width: 1200px;
+    margin:auto;
+    display: flex;
+    gap : 20px;
+
+    .leftContainer {
+        width: calc((100% / 12 )  * 8);
+    }
+
+    .rightContainer {
+        width: calc((100% / 12) * 4 );
+    }
+}
