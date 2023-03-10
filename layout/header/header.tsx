@@ -119,7 +119,7 @@ const Header = () => {
 
         <div className={styles.containerMobile}>
           <button className={styles.left} onClick={()=>setIsShowMobileMenu(!isShowMobileMenu)}><Icon style={{fill:'white'}} component={MenuIcon}/></button>
-          <Image src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' width={50} height={40} alt="moviedb icon"/>
+          <a href="/"><Image src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg' width={50} height={40} alt="moviedb icon"/></a>
           <div className={styles.right}></div>
         </div>
       </div>

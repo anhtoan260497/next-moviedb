@@ -8,13 +8,11 @@ import ModalVideo from '@/components/ModalVideo/ModalVideo';
 import { RootState } from '@/store/store';
 
 function MovieDetail(props: any) {
-    const noContentRef = useRef<HTMLInputElement>(null)
     const modalTrailers = useSelector<RootState, boolean>(state => state.movieSlice.isModalTrailers)
     const dispatch = useDispatch()
+
     if (!props?.data?.id) return
-    if (props?.data?.id) {
-        dispatch(setMovieInfo(props.data))
-    }
+    if (props?.data?.id) dispatch(setMovieInfo(props.data))
 
     return (
         <>
@@ -24,8 +22,17 @@ function MovieDetail(props: any) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div ref={noContentRef}>
+            <div>
                 <MovieDetailHeader />
+                <div style={{display:'flex',gap : '10px'}}>
+                    <div style={{width : 'calc((100% / 12) * 8) ',border:'1px solid blue'}}>
+
+                    </div>
+
+                    <div style={{width : 'calc((100% / 12) * 4)',border:'1px solid red'}}>
+
+                    </div>
+                </div>
             </div>
             {modalTrailers && <ModalVideo />}
         </>
