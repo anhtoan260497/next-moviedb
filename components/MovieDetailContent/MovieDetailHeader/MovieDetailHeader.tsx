@@ -28,11 +28,11 @@ function MovieDetailHeader() {
     }
 
     const renderCrew = () => {
-        const crewDirector = crews.filter(item => item.job.includes('Creator') || item.job.includes('Director') || item.job.includes('Screenplay'))
+        const crewDirector = crews.filter(item => item.job.includes('Creator') || item.job.includes('Director') || item.job.includes('Screenplay') || item.job.includes('Director'))
         const crewDirectorLimit = crewDirector.filter((item, key) => key < 6)
-        return crewDirectorLimit.map(item => {
+        return crewDirectorLimit.map((item,key) => {
             return (
-                <div className={styles.directorInfo}>
+                <div className={styles.directorInfo} key={key}>
                     <p className={styles.directorName}>{item.name}</p>
                     <p className={styles.directorCast}>{item.job}</p>
                 </div>
