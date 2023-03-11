@@ -11,11 +11,9 @@ function Cast() {
 
     const renderCastItem = () => {
        return cast.map((item:CastItemInterface) => {
-            return <CastItem profile_path={item.profile_path}  character={item.character || item.original_name} name={item.name}/>
+            return <CastItem key={item.id} profile_path={item.profile_path}  character={item.character || item.original_name} name={item.name}/>
         })
     }
-
-    console.log(cast)
 
     return (
         <div className={styles.container}>

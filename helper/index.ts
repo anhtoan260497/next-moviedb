@@ -9,3 +9,12 @@ export const calculateRuntime = (value : number):string => {
     const minute = value - (hour * 60)
     return hour ? `${hour}h ${minute}m` : `${minute}m`
 }
+
+export const premieredString = (date : string, name: string, season : string) => {
+        const dateString = date.split('-')
+        const year = dateString[0]
+        const day = dateString.pop()
+        const monthIndex = parseInt(dateString.pop() || "0")
+        const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+        return `${season} of ${name} premiered on ${months[monthIndex-1]} ${day}, ${year}` 
+}

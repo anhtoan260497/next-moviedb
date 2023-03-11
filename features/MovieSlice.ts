@@ -129,16 +129,16 @@ export const movieSlice = createSlice({
   },
 
   extraReducers: (builder) => {
-    builder.addCase(getTrending.pending, (state, action) => {
+    builder.addCase(getTrending.pending, (state) => {
       state.isLoading = true;
     }),
-      builder.addCase(getTrending.rejected, (state, action) => {
+      builder.addCase(getTrending.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       }),
       builder.addCase(getTrending.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.trending = action.payload;
+        state.trending = action.payload.filter((item:MovieList) => item.vote_average !== 0);
       }),
       builder.addCase(getPopular.pending, (state) => {
         state.isLoadingPopular = true;
@@ -149,7 +149,7 @@ export const movieSlice = createSlice({
       }),
       builder.addCase(getPopular.fulfilled, (state, action) => {
         state.isLoadingPopular = false;
-        state.popular = action.payload;
+        state.popular = action.payload.filter((item:MovieList)=>item.vote_average !== 0);
       });
       builder.addCase(getTrailers.pending,(state) => {
         state.isLoadingTrailer = true

@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import MovieDetailHeader from '@/components/MovieDetailHeader/MovieDetailHeader';
+import React from 'react';
+import MovieDetailHeader from '@/components/MovieDetailContent/MovieDetailHeader/MovieDetailHeader';
 import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next';
 import Head from 'next/head'
 import { setMovieInfo } from '@/features/MovieInfoSlice';
@@ -7,13 +7,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import ModalVideo from '@/components/ModalVideo/ModalVideo';
 import { RootState } from '@/store/store';
 import MovieDetailContent from '@/components/MovieDetailContent/MovieDetailContent';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 
 function MovieDetail(props: any) {
     const modalTrailers = useSelector<RootState, boolean>(state => state.movieSlice.isModalTrailers)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
 
     if (!props?.data?.id) return
-    if (props?.data?.id) dispatch(setMovieInfo(props.data))
+    if (props?.data?.id) {
+        dispatch(setMovieInfo(props.data))
+    }
 
     return (
         <>

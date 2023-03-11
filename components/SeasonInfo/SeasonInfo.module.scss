@@ -1,0 +1,41 @@
+.container {
+    margin : 10px 0;
+
+    .title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .seasonContainer {
+        width: 100%;
+        box-shadow: 0 2px 8px rgb(0 0 0 / 10%); 
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        overflow: hidden;
+        gap : 20px;
+        
+        .poster {
+            height: 100%;
+        }
+
+        .seasonInfo {
+
+            .seasonNumber {
+                margin-bottom: 20px;
+
+                .number {
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+
+                .yearAndEpisode {
+                    display: flex;
+                    gap : 5px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
