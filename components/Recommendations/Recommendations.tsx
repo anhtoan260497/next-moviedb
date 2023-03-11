@@ -8,7 +8,6 @@ import RecommendationItem from '../RecommendationItem/RecommendationItem';
 function Recommendations() {
 
     const recommendationFilms = useSelector<RootState, MovieInfo[]>(state => state.movieInfoSlice.recommendationFilms)
-    console.log(recommendationFilms)
 
     const renderRecommendationFilms = () => {
         return recommendationFilms.map(item => {
