@@ -9,7 +9,7 @@ import styles from './SeasonInfo.module.scss'
 function SeasonInfo() {
     const info =  useSelector<RootState, MovieInfo>( state => state.movieInfoSlice.info)
     const renderOverview = () => {
-       return premieredString(info.first_air_date, info.original_name, info.seasons[0].name)
+       return premieredString(info.first_air_date = '2023/01/01', info.original_name = '', info?.seasons?.[0].name || '')
     }
 
 
