@@ -14,7 +14,13 @@ function HomepageSearch({ backgroundImage }: HomepageSearchData) {
         setInput(e.target.value)
     }
 
-    const style = {
+    const handleClickSearch = () => {
+        const inputArr = input.split(' ')
+        const inputParams = inputArr.join('+')
+        window.location.href = (`/search?query=${inputParams}`)
+    }
+
+    const style = { 
         backgroundImage: `url('${process.env.NEXT_PUBLIC_HEADER_IMG}${backgroundImage}')`
     }
     return (
@@ -27,7 +33,7 @@ function HomepageSearch({ backgroundImage }: HomepageSearchData) {
             <div className={styles.HomepageSearchInput}>
                 <input className={clsx(styles.HomepageSearchInputField,styles.desktop)} onChange={e => hanleChangeValue(e)} placeholder='Search for a movie, tv show, person...' />
                 <input className={clsx(styles.HomepageSearchInputField,styles.mobile)} onChange={e => hanleChangeValue(e)} placeholder='Search...' />
-                <button className={styles.HomepageSearchButton}>Search</button>
+                <button className={styles.HomepageSearchButton} onClick={handleClickSearch}>Search</button>
             </div>
         </div>
     );

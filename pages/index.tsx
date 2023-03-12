@@ -1,4 +1,3 @@
-import getListMovie from '@/api/getListMovie'
 import HomepageSearch from '@/components/HomepageSearch/HomepageSearch'
 import HomepageSlideOptions from '@/components/HomepageSlideOptions/HomepageSlideOptions'
 import HomepageTrailers from '@/components/HomepageTrailers/HomepageTrailers'
@@ -6,7 +5,6 @@ import ModalVideo from '@/components/ModalVideo/ModalVideo'
 import { RootState } from '@/store/store'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
 
