@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieDetailHeader from '@/components/MovieDetailContent/MovieDetailHeader/MovieDetailHeader';
+import MovieDetailHeader from '@/components/MovieDetailHeader/MovieDetailHeader';
 import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next';
 import Head from 'next/head'
 import { setMovieInfo } from '@/features/MovieInfoSlice';

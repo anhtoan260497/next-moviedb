@@ -7,16 +7,16 @@ export interface MovieInfo {
   backdrop_path?: string;
   belongs_to_collection?: BelongsToCollection;
   budget?: number;
-  first_air_date ?: string;
+  first_air_date?: string;
   genres?: Genres[];
   homepage?: string;
   id?: number;
   imdb_id?: string;
   languages?: string[];
-  media_type ?: string,
+  media_type?: string;
   original_language?: string;
   original_title?: string;
-  original_name ?: string;
+  original_name?: string;
   origin_country?: string;
   overview?: string;
   popularity?: number;
@@ -27,12 +27,12 @@ export interface MovieInfo {
   revenue?: number;
   runtime?: number;
   spoken_languague?: SpokenLanguague[];
-  seasons ?: SeasonInfoInterface[];
+  seasons?: SeasonInfoInterface[];
   status?: string;
   tagline?: string;
   title?: string;
   video?: boolean;
-  vote_average ?: number;
+  vote_average?: number;
   vote_count?: number;
 }
 
@@ -102,7 +102,8 @@ interface MovieInfoSliceData {
   crew: CrewItem[];
   cast: CastItemInterface[];
   reviews: ReviewInterface[];
-  recommendationFilms : MovieInfo[]
+  recommendationFilms: MovieInfo[];
+  externalIds : ExternalIds
 }
 
 export interface VideoItem {
@@ -130,12 +131,12 @@ export interface SeasonInfoInterface {
 
 export interface ReviewInterface {
   author: string;
-  author_details : reviewPerson,
+  author_details: reviewPerson;
   content: string;
   created_at: string;
   id: string;
   updated_at: string;
-  url: string
+  url: string;
 }
 
 export interface reviewPerson {
@@ -145,11 +146,20 @@ export interface reviewPerson {
   username: string;
 }
 
+export interface ExternalIds {
+  id ?: number;
+  imdb_id ?: string;
+  wikidata_id ?: string;
+  facebook_id ?: string;
+  instagram_id ?: string;
+  twitter_id ?: string;
+}
+
 const initialState: MovieInfoSliceData = {
   info: {
     original_name: "",
     first_air_date: "",
-    vote_average : 0,
+    vote_average: 0,
     seasons: [
       {
         air_date: "",
@@ -207,31 +217,38 @@ const initialState: MovieInfoSliceData = {
   ],
   isErrorMovieInfo: false,
   isLoading: false,
-  reviews : [{
-    author: '',
-    author_details: {name: '', username: '', avatar_path: null, rating: 0},
-    content: "",
-    created_at: "",
-    id: "",
-    updated_at: "",
-    url: ""
-  }],
-  recommendationFilms : [{
-    original_name: "",
-    first_air_date: "",
-    vote_average : 0,
-    seasons: [
-      {
-        air_date: "",
-        episode_count: 0,
-        id: 0,
-        name: "",
-        overview: "",
-        poster_path: "",
-        season_number: 0,
-      },
-    ],
-  }]
+  reviews: [
+    {
+      author: "",
+      author_details: { name: "", username: "", avatar_path: null, rating: 0 },
+      content: "",
+      created_at: "",
+      id: "",
+      updated_at: "",
+      url: "",
+    },
+  ],
+  recommendationFilms: [
+    {
+      original_name: "",
+      first_air_date: "",
+      vote_average: 0,
+      seasons: [
+        {
+          air_date: "",
+          episode_count: 0,
+          id: 0,
+          name: "",
+          overview: "",
+          poster_path: "",
+          season_number: 0,
+        },
+      ],
+    },
+  ],
+  externalIds : {
+
+  }
 };
 
 export const getTrailersMovie = createAsyncThunk(
@@ -309,6 +326,24 @@ export const getRecommendationFilms = createAsyncThunk(
   }
 );
 
+export const getExternalIds = createAsyncThunk(
+  "MovieInfo/getExternalIds",
+  async ({
+    type,
+    id,
+  }: {
+    type?: string | string[];
+    id?: string | string[];
+  }) => {
+    try {
+      const result = await getMovieInfo.getExternalIds(type, id);
+      return result.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 export const movieInfoSlice = createSlice({
   name: "movieInfoSlice",
   initialState,
@@ -337,8 +372,11 @@ export const movieInfoSlice = createSlice({
     builder.addCase(getReviewsMovie.fulfilled, (state, action) => {
       state.reviews = action.payload;
     });
-    builder.addCase(getRecommendationFilms.fulfilled,(state,action)=> {
-      state.recommendationFilms = action.payload
+    builder.addCase(getRecommendationFilms.fulfilled, (state, action) => {
+      state.recommendationFilms = action.payload;
+    });
+    builder.addCase(getExternalIds.fulfilled,(state,action)=>{
+      state.externalIds = action.payload
     })
   },
 });
