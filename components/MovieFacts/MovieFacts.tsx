@@ -16,7 +16,7 @@ function MovieFacts() {
 
     return (
         <div className={styles.container}>
-            <h3 className={styles.movieTitle}>Facts</h3>
+            {router.query.type === 'tv' && <h3 className={styles.movieTitle}>Facts</h3>}
             <div className={styles.status}>
                 <p className={styles.statusTitle}>Status</p>
                 <p className={styles.statusContent}>{info.status}</p>
