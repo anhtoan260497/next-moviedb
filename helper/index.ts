@@ -18,3 +18,7 @@ export const premieredString = (date : string, name: string, season : string) =>
         const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
         return `${season} of ${name} premiered on ${months[monthIndex-1]} ${day}, ${year}` 
 }
+
+export const convertRevenue = (revenue : number) => {
+   return (revenue).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
