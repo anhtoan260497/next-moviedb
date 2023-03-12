@@ -1,0 +1,41 @@
+.container {
+    width: 100%;
+    height: 140px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    .content {
+       height: 100%;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       gap : 10px;
+       margin-left: 10px;
+
+       .title {
+        font-size: 20px;
+        font-weight: 600;
+       }
+
+       .date {
+        font-size: 15px;
+        color : rgb(145, 145, 145)
+       }
+
+       .description {
+        font-size: 15px;
+        font-weight: 300;
+        line-height: 1.6;
+        overflow: hidden;
+        display: -webkit-box; 
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        max-height: 50px;
+       }
+    }
+   
+}
