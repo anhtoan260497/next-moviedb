@@ -5,15 +5,14 @@ import { RootState } from '@/store/store';
 import { MovieInfo } from '@/features/MovieInfoSlice';
 import RecommendationItem from '../RecommendationItem/RecommendationItem';
 
-function Recommendations() {
+function Recommendations({}) {
 
     const recommendationFilms = useSelector<RootState, MovieInfo[]>(state => state.movieInfoSlice.recommendationFilms)
-
     const renderRecommendationFilms = () => {
-        return recommendationFilms.map(item => {
+        return recommendationFilms.map((item, key) => {
             return (
-                <RecommendationItem key={item.id} media_type={item.media_type || 'tv'} id={item.id}
-                    backdrop_path={item.backdrop_path} poster_path={item.poster_path} title={item.title}
+                <RecommendationItem key={key} media_type={item.media_type || 'tv'} id={item.id}
+                    backdrop_path={item.backdrop_path} poster_path={item.poster_path} title={item.title || item.original_name}
                     vote_average={item.vote_average} first_air_date={item.first_air_date} release_date={item.release_date} />
             )
         })

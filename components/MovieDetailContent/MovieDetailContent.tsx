@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Cast from '../CastSlide/Cast';
+import MovieFacts from '../MovieFacts/MovieFacts';
 import Recommendations from '../Recommendations/Recommendations';
 import SeasonInfo from '../SeasonInfo/SeasonInfo';
 import Social from '../Social/Social';
@@ -35,6 +36,7 @@ function MovieDetailContent() {
             </div>
             <div className={styles.rightContainer}>
                {Object.keys(externalIds).length > 0 && <SocialLink />}
+               <MovieFacts />
             </div>
         </div>
     );

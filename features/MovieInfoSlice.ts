@@ -21,16 +21,17 @@ export interface MovieInfo {
   overview?: string;
   popularity?: number;
   poster_path?: string;
-  production_company?: ProductionCompany[];
+  production_companies?: ProductionCompany[];
   production_countries?: ProductionCountry[];
   release_date?: string;
   revenue?: number;
   runtime?: number;
-  spoken_languague?: SpokenLanguague[];
+  spoken_languages?: SpokenLanguague[];
   seasons?: SeasonInfoInterface[];
   status?: string;
   tagline?: string;
   title?: string;
+  type ?: string,
   video?: boolean;
   vote_average?: number;
   vote_count?: number;
@@ -49,7 +50,7 @@ interface Genres {
 
 interface ProductionCompany {
   id: number;
-  logo: string;
+  logo_path: string;
   name: string;
   origin_country: string;
 }
