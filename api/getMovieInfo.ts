@@ -21,6 +21,10 @@ const getMovieInfo = {
     getRecommendationFilms :(type ?: string | string[] , id ?: string | string[]) => {
         const url =`${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=1`
         return axiosClient.get(url)
+    },
+    getExternalIds : (type ?: string | string[] , id ?: string | string[]) => {
+        const url = `${type}/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}`
+        return axiosClient.get(url)
     }
 }
 
