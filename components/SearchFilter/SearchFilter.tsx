@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import styles from './SearchFilter.module.scss'
 
 interface mediaTypeOptions {
-    [key: string]: boolean | boolean,
+    [key: string]: number,
 }
 
 function SearchFilter() {
