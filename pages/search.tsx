@@ -7,7 +7,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 interface searchData {
-    data: MovieInfo[]
+    data: MovieInfo[],
+    page : number
 }
 
 
@@ -39,7 +40,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
     const data = await result.json()
     return {
         props: {
-            data: data.results
+            data: data.results.filter((item:MovieInfo) => item.media_type === 'movie' || item.media_type === 'person'),
+            page : data.total_pages
         }
     }
 }
