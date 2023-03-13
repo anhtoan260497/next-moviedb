@@ -35,7 +35,7 @@ function search({ data }: searchData) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const query = ctx.query.query
-    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=true&query=${query}&page=1`)
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=1`)
     const data = await result.json()
     return {
         props: {
