@@ -19,7 +19,7 @@ function HomepageSearch({ backgroundImage }: HomepageSearchData) {
         e.preventDefault()
         const inputArr = input.split(' ')
         const inputParams = inputArr.join('+')
-        window.location.href = (`/search?query=${inputParams}`)
+        window.location.href = (`/search?query=${inputParams}&page=1`)
     }
 
     const style = {
