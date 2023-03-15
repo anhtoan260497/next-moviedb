@@ -1,49 +1,49 @@
 import { MovieInfo } from '@/features/MovieInfoSlice';
+import { setFilter } from '@/features/SearchInfoSlice';
 import { RootState } from '@/store/store';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './SearchFilter.module.scss'
 
 interface mediaTypeOptions {
-    [key: string]: number,
+    movie: number,
+    tv: number,
+    [key: string]: number | string,
+    isActive: string,
 }
 
 function SearchFilter() {
 
     const searchResult = useSelector<RootState, MovieInfo[]>(state => state.searchInfoSlice.searchResult)
-    const [chooseOptions, setChooseOptions] = useState<mediaTypeOptions>({})
+    const [chooseOptions, setChooseOptions] = useState<mediaTypeOptions>({ movie: 0, tv: 0, isActive: 'movie' })
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        const mediaTypeArr = searchResult.map(item => item.media_type)
-        const mediaTypeOptions: mediaTypeOptions = {}
-        mediaTypeArr.map((item: string = '') => !mediaTypeOptions[item] ? mediaTypeOptions[item] = 1 :mediaTypeOptions[item] += 1)
-        setChooseOptions(mediaTypeOptions)
+        const choosOptionsCount = { ...chooseOptions }
+        searchResult.map(item => { item.media_type === 'movie' ? choosOptionsCount.movie += 1 : choosOptionsCount.tv += 1 })
+        setChooseOptions(choosOptionsCount)
     }, [searchResult])
 
-    const checkingAddClassActive = (keyActive : number, key:number) => {
-        if(keyActive && keyActive === key) return true
-        if(!keyActive && key === 0) return true 
-        return false 
+    const handleChangeOption = (option:string) => {
+        const chooseOptionsClone = {...chooseOptions, isActive : option}
+        setChooseOptions(chooseOptionsClone)
+        dispatch(setFilter(option))
     }
 
 
-    const renderOptions = (keyActive ?: number) => {
+    const renderOptions = () => {
         const options = []
-        for(let item in chooseOptions) {
-            options.push({
-                name : item,
-                value : chooseOptions[item],
-            })
-        }
-        return options.map((item, key) => {
-            return (
-                <li className={clsx(styles.option, checkingAddClassActive(keyActive = 0,key) ? styles.active : '')} key={key}>
-                    <span>{item.name}</span>
-                    <span className={styles.number}>{item.value}</span>
+        for (let item in chooseOptions) {
+            if (item === 'isActive') continue
+            options.push(
+                <li className={clsx(styles.option, item === chooseOptions.isActive && styles.active)} key={item} onClick={() => handleChangeOption(item)}>
+                    <span>{item}</span>
+                    <span className={styles.number}>{chooseOptions[item]}</span>
                 </li>
             )
-        })
+        }
+        return options
     }
 
 
@@ -51,7 +51,7 @@ function SearchFilter() {
         <div className={styles.container}>
             <p className={styles.title}>Search Results</p>
             <ul className={styles.options}>
-               {renderOptions()}
+                {renderOptions()}
             </ul>
         </div>
     );

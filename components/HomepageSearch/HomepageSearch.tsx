@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import styles from './HomepageSearch.module.scss'
 
 interface HomepageSearchData {
@@ -8,19 +8,21 @@ interface HomepageSearchData {
 
 function HomepageSearch({ backgroundImage }: HomepageSearchData) {
 
-    const [input,setInput] =  useState('')
+    const [input, setInput] = useState('')
 
-    const hanleChangeValue = (e:ChangeEvent<HTMLInputElement>) => {
+    const hanleChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
         setInput(e.target.value)
     }
 
-    const handleClickSearch = () => {
+
+    const handleSubmitSearch = (e:FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         const inputArr = input.split(' ')
         const inputParams = inputArr.join('+')
         window.location.href = (`/search?query=${inputParams}`)
     }
 
-    const style = { 
+    const style = {
         backgroundImage: `url('${process.env.NEXT_PUBLIC_HEADER_IMG}${backgroundImage}')`
     }
     return (
@@ -31,9 +33,11 @@ function HomepageSearch({ backgroundImage }: HomepageSearchData) {
             </div>
 
             <div className={styles.HomepageSearchInput}>
-                <input className={clsx(styles.HomepageSearchInputField,styles.desktop)} onChange={e => hanleChangeValue(e)} placeholder='Search for a movie, tv show, person...' />
-                <input className={clsx(styles.HomepageSearchInputField,styles.mobile)} onChange={e => hanleChangeValue(e)} placeholder='Search...' />
-                <button className={styles.HomepageSearchButton} onClick={handleClickSearch}>Search</button>
+                <form onSubmit={ e => handleSubmitSearch(e)}>
+                    <input className={clsx(styles.HomepageSearchInputField, styles.desktop)} onChange={e => hanleChangeValue(e)} placeholder='Search for a movie, tv show, person...' />
+                    <input className={clsx(styles.HomepageSearchInputField, styles.mobile)} onChange={e => hanleChangeValue(e)} placeholder='Search...' />
+                    <button className={styles.HomepageSearchButton} type='submit' >Search</button>
+                </form>
             </div>
         </div>
     );

@@ -12,7 +12,6 @@ function MovieFacts() {
     const info = useSelector<RootState, MovieInfo>(state => state.movieInfoSlice.info)
     const companyProd = info?.production_companies?.[info?.production_companies.length - 1]
     const router = useRouter()
-    console.log(info)
 
     return (
         <div className={styles.container}>
