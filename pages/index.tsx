@@ -76,6 +76,7 @@ export const getStaticProps: GetStaticProps<dataProps> = async () => {
   try {
     const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}/movie/popular?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=${1}`)
     const data = await result.json()
+    console.log(data)
     return {
       props: {
         dataMovieList: data.results

@@ -1,6 +1,6 @@
 import SearchContent from '@/components/SearchContent/SearchContent';
 import { MovieInfo } from '@/features/MovieInfoSlice';
-import { setSearchResult } from '@/features/SearchInfoSlice';
+import { setCurrentPage, setSearchResult, setTotalPages } from '@/features/SearchInfoSlice';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
@@ -8,15 +8,18 @@ import { useDispatch } from 'react-redux';
 
 interface searchData {
     data: MovieInfo[],
-    page : number
+    page : number,
+    currentPage : number
 }
 
 
-function search({ data }: searchData) {
+function search({ data,page , currentPage}: searchData) {
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(setSearchResult(data))
+        dispatch(setTotalPages(page))
+        dispatch(setCurrentPage(currentPage))
     }, [])
 
     return (
@@ -36,12 +39,14 @@ function search({ data }: searchData) {
 
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const query = ctx.query.query
-    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=1`)
+    const currentPage = ctx.query.page
+    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`)
     const data = await result.json()
     return {
         props: {
-            data: data.results.filter((item:MovieInfo) => item.media_type === 'movie' || item.media_type === 'person'),
-            page : data.total_pages
+            data: data.results.filter((item:MovieInfo) => item.media_type === 'movie' || item.media_type === 'tv'),
+            page : data.total_pages,
+            currentPage : currentPage
         }
     }
 }
