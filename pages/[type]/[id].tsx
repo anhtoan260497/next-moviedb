@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieDetailHeader from '@/components/MovieDetailHeader/MovieDetailHeader';
-import { GetStaticProps, GetStaticPaths, GetStaticPropsContext } from 'next';
+import { GetStaticProps, GetStaticPaths, GetStaticPropsContext, GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head'
 import { setMovieInfo } from '@/features/MovieInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,14 +37,7 @@ function MovieDetail(props: any) {
 
 export default MovieDetail;
 
-export const getStaticPaths: GetStaticPaths = () => {
-    return {
-        paths: [],
-        fallback: true,
-    }
-}
-
-export const getStaticProps: GetStaticProps = async (ctx: GetStaticPropsContext) => {
+export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const { type, id }: any = ctx.params
     const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}${type}/${id}?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US`)
     const data = await result.json()
