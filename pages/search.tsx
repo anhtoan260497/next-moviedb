@@ -40,8 +40,10 @@ function search({ data,page , currentPage}: searchData) {
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const query = ctx.query.query
     const currentPage = ctx.query.page
+    console.log(currentPage)
     const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`)
     const data = await result.json()
+    console.log(data)
     return {
         props: {
             data: data.results.filter((item:MovieInfo) => item.media_type === 'movie' || item.media_type === 'tv'),
