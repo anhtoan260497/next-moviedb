@@ -23,7 +23,7 @@ function SearchResult() {
     const renderSearchItem = () => {
         return result.map((item, key) => <SearchItem key={key} original_name={item.original_name}
             original_title={item.original_title} release_date={item.release_date} first_air_date={item.first_air_date}
-            overview={item.overview} poster_path={item.poster_path} type={item.media_type} id={item.id}
+            overview={item.overview} poster_path={item.poster_path} type={filter} id={item.id}
         />)
     }
 
