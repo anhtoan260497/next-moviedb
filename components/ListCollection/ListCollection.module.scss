@@ -1,0 +1,54 @@
+.container {
+    width: 1200px;
+    margin:10px auto 20px;
+
+    .title {
+        margin: 10px 0 ;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .listContainer {
+        display: flex;
+        flex-direction: column;
+        gap : 10px;
+
+        .collectionItem {
+            display: flex;
+            gap : 10px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border:1px solid rgb(233, 233, 233);
+            border-radius: 10px;
+            overflow: hidden;
+            padding-right: 10px;
+
+            .collectionInfo {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 100%;
+                gap : 10px;
+
+                .nameAndDate {
+
+                    .date {
+                        font-size: 15px;
+                        color : rgb(122, 122, 122);
+                        font-weight: 300;
+                    }
+                }
+
+                .overview {
+                    font-weight: 300;
+                    line-height: 1.3;
+                    overflow: hidden;
+                    display: -webkit-box; 
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    max-height: 50px;
+                }
+            }
+        }
+    }
+}

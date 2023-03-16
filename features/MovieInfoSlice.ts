@@ -14,11 +14,13 @@ export interface MovieInfo {
   imdb_id?: string;
   languages?: string[];
   media_type?: string;
+  name ?: string;
   original_language?: string;
   original_title?: string;
   original_name?: string;
   origin_country?: string;
   overview?: string;
+  parts ?: MovieInfo[]
   popularity?: number;
   poster_path?: string;
   production_companies?: ProductionCompany[];
@@ -69,6 +71,7 @@ interface SpokenLanguague {
 export interface CrewItem {
   adult: boolean;
   credit_id: string;
+  character ?: string,
   department: string;
   gender: number;
   id: number;
@@ -83,7 +86,7 @@ export interface CrewItem {
 export interface CastItemInterface {
   adult?: boolean;
   cast_id?: number;
-  character?: string;
+  character ?: string;
   credit_id?: string;
   gender?: number;
   id?: number;
