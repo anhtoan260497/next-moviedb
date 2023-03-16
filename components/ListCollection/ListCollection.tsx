@@ -12,7 +12,7 @@ function ListCollection() {
 
     const renderListCollection = () => {
         return listCollection.map((item,key) => (
-            <div key={key} className={styles.collectionItem}>
+            <a href={`/${item.media_type}/${item.id}`} key={key} className={styles.collectionItem}>
                 <Image src={`https://www.themoviedb.org/t/p/w188_and_h282_bestv2/${item.poster_path}`} width={90} height={141} alt={item.name || ''} />
                 <div className={styles.collectionInfo}>
                     <div className={styles.nameAndDate}>
@@ -21,7 +21,7 @@ function ListCollection() {
                     </div>
                     <p className={styles.overview}>{item.overview}</p>
                 </div>
-            </div>
+            </a>
         ))
     }
 

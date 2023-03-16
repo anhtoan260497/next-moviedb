@@ -23,8 +23,8 @@ function CollectionDetailContent() {
 
     return (
         <div>
-            <CrewCollection actors={casts} title='Featured Cast' />
-            <CrewCollection actors={crews} title='Featured Crew' />
+            <CrewCollection actors={casts.filter((item,key) => key < 20)} title='Featured Cast' />
+            <CrewCollection actors={crews.filter((item,key) => key < 20)} title='Featured Crew' />
             <ListCollection />
         </div>
     );
