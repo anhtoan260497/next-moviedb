@@ -1,24 +1,25 @@
 import SearchContent from '@/components/SearchContent/SearchContent';
 import { MovieInfo } from '@/features/MovieInfoSlice';
-import { setCurrentPage, setSearchResult, setTotalPages } from '@/features/SearchInfoSlice';
+import { searchData, SearchItem, setCurrentPage, setFilter, setSearchResult, setTotalPages } from '@/features/SearchInfoSlice';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-interface searchData {
-    data: MovieInfo[],
-    page : number,
-    currentPage : number
-}
 
+function search( props : searchData) {
 
-function search({ data,page , currentPage}: searchData) {
     const dispatch = useDispatch()
+    const router = useRouter()
+    const type = router.query.type
+    const currentPage = router.query.page
+    console.log(props)
 
     useEffect(() => {
-        dispatch(setSearchResult(data))
-        dispatch(setTotalPages(page))
+        dispatch(setSearchResult(props))
+        dispatch(setFilter(router.query.type))
+        dispatch(setTotalPages(props[(type as string)].totalPages))
         dispatch(setCurrentPage(currentPage))
     }, [])
 
@@ -40,15 +41,27 @@ function search({ data,page , currentPage}: searchData) {
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const query = ctx.query.query
     const currentPage = ctx.query.page
-    console.log(currentPage)
-    const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/multi?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`)
-    const data = await result.json()
-    console.log(data)
+    const type = ['movie','tv','collection','person','company','keyword']
+    const propsData:searchData = {}
+    for(let i = 0 ; i < type.length ; i ++) {
+        try {
+            const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/${type[i]}?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`)
+            const data = await result.json()
+            console.log(data)
+            propsData[type[i]] = {
+                type : type[i],
+                totalPages : data.total_pages,
+                totalResults : data.total_results,
+                data : data.results
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
     return {
         props: {
-            data: data.results.filter((item:MovieInfo) => item.media_type === 'movie' || item.media_type === 'tv'),
-            page : data.total_pages,
-            currentPage : currentPage
+            ...propsData
         }
     }
 }
