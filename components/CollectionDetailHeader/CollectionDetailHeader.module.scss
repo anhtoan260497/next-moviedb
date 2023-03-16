@@ -1,0 +1,250 @@
+.containerFluid {
+    width: 100%;
+    height: 510px;
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    .background {
+        background-color: rgba(31.5, 31.5, 31.5, 0.7);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .container {
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+        padding: 30px 40px;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+
+        .poster {
+            border-radius: 10px;
+        }
+
+        .movieInfoContainer {
+            width: calc((100% - 300px - 20px));
+            color: white;
+
+            .info {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 10px;
+
+                .certification {
+                    padding: 0 10px;
+                    border: 1px solid rgb(198, 198, 198);
+                    color: rgb(198, 198, 198);
+                }
+
+                .languages {
+                    text-transform: uppercase;
+                }
+            }
+
+            .scoreAndTrailer {
+                display: flex;
+                gap : 20px;
+                align-items: center;
+
+                .userScoreContainer {
+                    margin-top: 20px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .progress {
+                        position: relative;
+                        .percentValue {
+                            font-size: 26px;
+                            width: 100%;
+                            text-align: center;
+                            // border:1px solid red;
+                            position: absolute;
+                            top: 20px;
+                            left: 4px;
+                            z-index: 3;
+
+                            .percentIcon {
+                                font-size: 10px;
+                                vertical-align: text-top;
+                            }
+                        }
+                    }
+
+                    .userScoreLabel {
+                        position: relative;
+                        bottom: 5px;
+                    }
+                }
+
+                .playTrailer {
+                    display: flex;
+                    align-items: center;
+                    gap : 5px;
+                    background-color: transparent;
+                    color:white;
+                    border:none;
+                    cursor: pointer;
+                    &:hover {
+                        color : rgb(206, 206, 206);
+                    }
+                }
+            }
+            
+            .quotes {
+                margin-top : 10px;
+                color :rgb(213, 213, 213);
+                font-size: 18px;
+                font-style: italic;
+                font-weight: 300;
+            }
+
+            .overviewContainer {
+                width: 100%;
+                margin-top : 10px;
+
+                .overviewTitle {
+                    margin-bottom: 10px;
+                }
+
+                .overview {
+                    font-weight: 300;
+                    line-height: 1.5;
+                }
+            }
+
+            .directorContainer {
+                width: 100%;
+                height: 20px;
+                margin-top: 20px;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap : 30px;
+
+                .directorInfo {
+                    width: 30%;
+
+                    .directorName {
+                        font-size: 18px;
+                        font-weight: 700;
+                    }
+    
+                    .directorCast {
+                        font-size: 14px;
+                        font-weight: 300;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.imageMobile {
+    display: none;
+}
+
+@media only screen and (max-width : 768px) {
+    .imageMobile {
+        display: block;
+        height: 240px;
+        display: flex;
+        align-items: center;
+        padding : 64px 0 0 32px; 
+        background-position: calc((((100vw / 2.222222) - 100px) / 1.5) / 2) 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0 64px;
+        position: relative;
+        z-index: 2;
+
+
+        &::before {
+            content : '';
+            left: 0;
+            position: absolute;
+            width: 150px;
+            height: 74%;
+            background : linear-gradient(to right, rgb(50, 50, 50) 20%, rgba(62, 62, 62, 0) 50%);
+            z-index: 1;
+
+        }
+
+        .poster {
+            border-radius: 10px;
+            position: relative;
+            z-index: 3;
+        }
+    }
+
+    .containerFluid {
+        height: auto;
+    
+        .container {
+            width: 100%;
+            height: 100%;
+            padding: 30px 20px;
+            display: flex;
+            background-color: rgba(31.5, 31.5, 31.5, 1) ;
+            justify-content: space-between;
+    
+            .poster {
+               display: none;
+            }
+    
+            .movieInfoContainer {
+                width: 100%;
+    
+                .info {
+                    background-color: rgb(29,29,29);
+                    border:1px solid black;
+                    width: 100vw;
+                    left: calc(50% - 50vw) !important;
+                    position: relative;
+                    padding : 10px 20%;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                }
+
+                .overviewContainer {
+                    margin-top: 30px;
+
+                    .overviewTitle {
+                        margin-bottom: 2px;
+                    }
+                }
+    
+                .scoreAndTrailer {
+                    justify-content: space-around;
+    
+                    .playTrailer {
+                        font-size: 20px;
+                    }
+                }
+
+                .quotes {
+                    margin-top: 20px;
+                }
+    
+                .directorContainer {
+                    height: auto;
+                    margin-top: 40px;
+    
+                    .directorInfo {
+                        width: 45%;
+    
+                    }
+                }
+            }
+        }
+    }
+}

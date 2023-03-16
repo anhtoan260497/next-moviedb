@@ -1,0 +1,25 @@
+.crewItem {
+    width: calc((100% / 12) * 3 - 20px) ;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+
+    .nameContainer {
+        width: 200px;
+        height: 100%;
+        
+        .actorName {
+            font-size: 16px;
+            font-weight: 800;
+            margin: 5px 0;
+        }
+
+        .characterName {
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
