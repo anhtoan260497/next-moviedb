@@ -9,10 +9,11 @@ function Pagination() {
     const router = useRouter()
     const totalPages = useSelector<RootState, number>(state => state.searchInfoSlice.totalPages)
     const currentPages = useSelector<RootState, number>(state => state.searchInfoSlice.currentPage)
+    const type = useSelector<RootState, string>(state => state.searchInfoSlice.filter)
 
     const createLinkPagination = (pageNumber:number) => {
         const query = router.query.query
-        return `/search?query=${query}&page=${pageNumber}`
+        return `/search?query=${query}&page=${pageNumber}&type=${type}`
     } 
 
     const renderPagination = () => {
@@ -46,6 +47,17 @@ function Pagination() {
                     </a>
                 )
             }
+        }
+
+        if(currentPages - 1 > 1) {
+            pages.unshift(
+                <p key={'key-1'}>...</p>
+            )
+            pages.unshift(
+                <a href={createLinkPagination(1)} key='key-2' className={clsx(styles.page)}>
+                    {1}
+                </a>
+            )
         }
 
         if (currentPages === totalPages)  {

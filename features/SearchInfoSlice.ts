@@ -3,17 +3,30 @@ import { MovieInfo } from "./MovieInfoSlice";
 import getSearch from "@/api/getSearch";
 
 export interface SearchInfoSlice {
-  searchResult: MovieInfo[];
+  searchResult: searchData;
   filter: string;
   totalPages: number;
   currentPage: number;
+  isLoadingChangeFilter : boolean
+}
+
+export interface searchData {
+  [key:string] : SearchItem
+}
+
+export interface SearchItem {
+  type : string,
+  data : MovieInfo[],
+  totalPages : number,
+  totalResults : number
 }
 
 const initialState: SearchInfoSlice = {
-  searchResult: [],
+  searchResult: {},
   filter: "movie",
   totalPages: 1,
   currentPage: 1,
+  isLoadingChangeFilter : false,
 };
 
 export interface ParamsGetSearchMovies {
@@ -31,6 +44,8 @@ export const searchInfoSlice = createSlice({
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
+      state.isLoadingChangeFilter = true
+      state.isLoadingChangeFilter = false
     },
     setTotalPages: (state, action) => {
       state.totalPages = action.payload;

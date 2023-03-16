@@ -1,19 +1,27 @@
 import { MovieInfo } from '@/features/MovieInfoSlice';
+import { searchData } from '@/features/SearchInfoSlice';
 import { RootState } from '@/store/store';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Loader from '../Loader/Loader';
 import SearchItem from '../SearchItem/SearchItem';
 import styles from './SearchResult.module.scss'
 
 function SearchResult() {
 
-    const searchResult = useSelector<RootState, MovieInfo[]>(state => state.searchInfoSlice.searchResult)
+    const searchResult = useSelector<RootState, searchData>(state => state.searchInfoSlice.searchResult)
     const filter = useSelector<RootState, string>(state => state.searchInfoSlice.filter)
+    const isLoading =  useSelector<RootState, boolean>(state => state.searchInfoSlice.isLoadingChangeFilter)
+    const [result, setResult] = useState<MovieInfo[]>([])
+
+    useEffect(() => {
+        const resultArr = Object.values(searchResult)
+        const result = resultArr.filter(item => item.type === filter)
+        if(result.length > 0 ) setResult(result[0].data)
+    }, [searchResult,filter])
 
     const renderSearchItem = () => {
-        if (searchResult.length === 0) return <div> No Films </div>
-         const filterMovies =  searchResult.filter((item, key) => item.media_type === filter)
-         return filterMovies.map((item, key) => <SearchItem key={key} original_name={item.original_name}
+        return result.map((item, key) => <SearchItem key={key} original_name={item.original_name}
             original_title={item.original_title} release_date={item.release_date} first_air_date={item.first_air_date}
             overview={item.overview} poster_path={item.poster_path} type={item.media_type} id={item.id}
         />)
@@ -22,7 +30,7 @@ function SearchResult() {
     return (
         <div className={styles.container}>
             <>
-                {renderSearchItem()}
+                { isLoading ? <Loader /> : renderSearchItem()}
             </>
         </div>
     );
