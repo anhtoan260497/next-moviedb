@@ -42,51 +42,28 @@ function SearchFilter() {
         )
     }
 
+    const renderOptionsMobile = () => {
+        return searchResultsArr.map((item: SearchItem) => (
+            currentPage !== 1 ? <a href={createLinkFilter(item.type)} className={clsx(styles.optionMobile, item.type === type && styles.isActive)} key={item.type}>
+                <span className={styles.type}>{item.type}</span>
+                <span className={styles.number}>{item.totalResults}</span>
+            </a> : <a href={createLinkFilter(item.type)} className={clsx(styles.optionMobile, item.type === type && styles.isActive)} key={item.type} onClick={() => handleChangeOption(item.type)}>
+                <span className={styles.type}>{item.type}</span>
+                <span className={styles.number}>{item.totalResults}</span>
+            </a>
+        ))
+    }
+
 
     return (
         <div className={styles.container}>
             <p className={styles.title}>Search Results</p>
-            {/* <ul className={styles.options}>
+            <ul className={clsx(styles.options, styles.desktop)}>
                 {renderOptions()}
-            </ul> */}
-            <div className={styles.scrollContainer}>
+            </ul>
+            <div className={clsx(styles.scrollContainer)}>
                 <ul className={styles.optionsMobile}>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
-                    <li className={styles.optionMobile}>
-                        <span>Movies</span>
-                        <span>1088</span>
-                    </li>
+                    {renderOptionsMobile()}
                 </ul>
             </div>
         </div>
