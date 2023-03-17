@@ -5,7 +5,7 @@ import { CircularProgress } from '@mui/material';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 import styles from './CollectionDetailHeader.module.scss'
 
 function CollectionDetailHeader() {
@@ -31,9 +31,9 @@ function CollectionDetailHeader() {
                 <Image className={styles.poster} src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt={name || ''} width={300} height={450} />
                 <div className={styles.movieInfoContainer}>
                     <h1>{name}</h1>
-                    <div className={styles.info}>
+                   { genres && <div className={styles.info}>
                         <p>{renderGenres()}</p>
-                    </div>
+                    </div>}
                     <div className={styles.scoreAndTrailer}>
                         <div className={styles.userScoreContainer}>
                             <div className={styles.progress}>

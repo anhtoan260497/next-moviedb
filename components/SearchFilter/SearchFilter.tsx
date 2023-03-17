@@ -10,7 +10,7 @@ function SearchFilter() {
     const router = useRouter()
     const type = useSelector<RootState, string>(state => state.searchInfoSlice.filter)
     const searchResult = useSelector<RootState, searchData>(state => state.searchInfoSlice.searchResult)
-    const filter = useSelector<RootState,string>(state => state.searchInfoSlice.filter)
+    const filter = useSelector<RootState, string>(state => state.searchInfoSlice.filter)
     const [searchResultsArr, setSearchResultArr] = useState<SearchItem[]>([])
     const currentPage = useSelector<RootState, number>(state => state.searchInfoSlice.currentPage)
     const dispatch = useDispatch()
@@ -24,10 +24,10 @@ function SearchFilter() {
         dispatch(setTotalPages(searchResult[filter].totalPages))
     }
 
-    const createLinkFilter = (filter:string) => {
+    const createLinkFilter = (filter: string) => {
         const query = router.query.query
         return `/search?query=${query}&page=1&type=${filter}`
-    } 
+    }
 
 
     const renderOptions = () => {
@@ -46,9 +46,49 @@ function SearchFilter() {
     return (
         <div className={styles.container}>
             <p className={styles.title}>Search Results</p>
-            <ul className={styles.options}>
+            {/* <ul className={styles.options}>
                 {renderOptions()}
-            </ul>
+            </ul> */}
+            <div className={styles.scrollContainer}>
+                <ul className={styles.optionsMobile}>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                    <li className={styles.optionMobile}>
+                        <span>Movies</span>
+                        <span>1088</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     );
 }
