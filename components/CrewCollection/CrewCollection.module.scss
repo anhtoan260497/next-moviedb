@@ -14,3 +14,10 @@
         gap : 20px;
     }
 }
+
+@media only screen and (max-width : 768px) {
+    .container {
+        width: 94%;
+        margin: 10px auto;
+    }
+}

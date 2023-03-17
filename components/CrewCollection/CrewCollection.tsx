@@ -7,7 +7,7 @@ import styles from './CrewCollection.module.scss'
 function CrewCollection({ actors, title }: { actors: CrewItem[] | CastItemInterface[], title : string }) {  
     
     const renderActors = () => {
-        return actors.map((item, key) => (<CollectionActorItem key={key} profilePath={item.profile_path || ''} actorName={item.name || ''} characterName={item.character || ''} />))
+        return actors.map((item, key) => (<CollectionActorItem key={key} profilePath={item.profile_path || ''} actorName={item.name || ''} characterName={item.character || item.known_for_department || ''} />))
     }
 
     return (

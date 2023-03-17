@@ -3,23 +3,21 @@
     height: fit-content;
     border-radius: 10px;
     overflow: hidden;
-    border :1px solid rgb(205, 205, 205);
-
+    border: 1px solid rgb(205, 205, 205);
 
     .title {
         font-size: 20px;
-        padding  : 20px 10px;
-        background-color: rgb(6,180,228);
+        padding: 20px 10px;
+        background-color: rgb(6, 180, 228);
         font-weight: 600;
-        color : white;
-
+        color: white;
     }
 
     .options {
         list-style: none;
         display: flex;
         flex-direction: column;
-        gap : 10px;
+        gap: 10px;
         padding-bottom: 10px;
 
         .option {
@@ -29,7 +27,7 @@
             cursor: pointer;
 
             .number {
-                padding : 1px 10px;
+                padding: 1px 10px;
                 background-color: rgb(223, 223, 223);
                 border-radius: 10px;
             }
@@ -40,6 +38,42 @@
 
             .number {
                 background-color: rgb(238, 238, 238);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100vw;
+        left: calc((50% - 50vw));
+        margin-top: 64px;
+        position: relative;
+        border-radius: 0;
+
+        .title {
+            font-size: 18px;
+            padding: 12px;
+        }
+
+        .scrollContainer {
+            width: 100%;
+            overflow-x: scroll;
+
+            .optionsMobile {
+                width: 100%;
+                display: flex;
+                gap : 20px;
+                list-style: none;
+
+                .optionMobile {
+                    width: fit-content;
+                    padding : 10px 10px 10px 0;
+
+                    &:first-child{
+                        margin-left: 3%;
+                    }
+                }
             }
         }
     }
