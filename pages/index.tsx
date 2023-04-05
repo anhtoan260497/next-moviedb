@@ -14,6 +14,7 @@ export interface MovieList {
   genres_ids: Number[],
   id: number,
   original_languege: string,
+  name : string,
   original_title : string,
   original_name  : string,
   overview: string,
