@@ -1,25 +1,27 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables.scss";
 
 .containerFluid {
     width: 100%;
     height: 64px;
     background-color: $header-background-color;
-    position: relative;
+    position: fixed;
+    top: 0;
     z-index: 5;
 
     .container {
         width: 1200px;
         height: 100%;
-        margin:auto;
+        margin: auto;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        
+
         .leftContainer {
             display: flex;
             align-items: center;
             width: calc((100% / 12) * 5);
 
-            .menuContainer{
+            .menuContainer {
                 display: flex;
                 width: 100%;
                 justify-content: space-around;
@@ -33,13 +35,13 @@
                     list-style: none;
                     background-color: white;
                     border-radius: 5px;
-                    gap : 0 10px;
-                    top : 50px;
+                    gap: 0 10px;
+                    top: 50px;
                     overflow: hidden;
-                    border:1px solid rgb(238, 238, 238);
+                    border: 1px solid rgb(238, 238, 238);
 
-                    .menuChildItem{
-                        padding : 5px 40px 5px 20px;
+                    .menuChildItem {
+                        padding: 5px 40px 5px 20px;
                         cursor: pointer;
 
                         &:hover {
@@ -50,9 +52,26 @@
 
                 .menuItemTitle {
                     font-size: 16px;
-                    color : white;
+                    color: white;
                     cursor: pointer;
-                    
+                }
+            }
+        }
+
+        .rightContainer {
+            width: calc((100% / 12) * 5);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            .searchButton {
+                background: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                .searchIcon {
+                    color: rgb(6, 180, 228);
                 }
             }
         }
@@ -60,24 +79,123 @@
 
     .menuMobileContainer {
         display: none;
-
     }
 
     .containerMobile {
         display: none;
-       }
+    }
+
+    .searchContainerFluid {
+        width: 100%;
+        max-width: 1920px;
+        margin: auto;
+        background-color: white;
+        position: fixed;
+        border-bottom: 1px solid rgb(219, 219, 219);
+
+        .searchContainer {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+
+            .inputContainer {
+                background-color: white;
+                position: relative;
+
+                .icon {
+                    position: absolute;
+                    top: 10px;
+                    font-size: 20px;
+                }
+
+                .inputField {
+                    padding: 10px 25px 10px;
+                    width: 100%;
+                    background-color: white;
+                    border: none;
+                    outline: none;
+                    font-size: 16px;
+                    color: rgb(107, 107, 107);
+
+                    &::placeholder {
+                        color: rgb(126, 126, 126);
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+
+        .trendingTitleFluid {
+            background-color: #dadada;
+            padding: 3px;
+            .trendingTitle {
+                width: 100%;
+                max-width: 1200px;
+                margin: 5px auto;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                .icon {
+                    font-size: 32px;
+                }
+
+                .title {
+                    font-size: 24px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .trendingSearchFluid {
+            .trendingSearch {
+                .trendingItem {
+                    width: 100%;
+                    margin: auto;
+                    list-style: none;
+                    cursor: pointer;
+                    border-bottom: 1px solid rgb(219, 219, 219);
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+
+                    .trendingItemCenter {
+                        max-width: 1200px;
+                        display: flex;
+                        margin: auto;
+                        padding: 5px 5px 5px 0;
+                        gap: 10px;
+
+                        .icon {
+                            font-size: 20px;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: #dadada;
+                    }
+                }
+            }
+        }
+    }
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
     .containerFluid {
         position: fixed;
-        z-index: 4  ;
+        z-index: 4;
 
         .container {
             width: 90%;
+            flex-direction: row-reverse;
 
             .leftContainer {
                 display: none;
+            }
+
+            .rightContainer {
+                position: absolute;
             }
 
             .containerMobile {
@@ -90,37 +208,69 @@
 
                 .left {
                     background-color: transparent;
-                    border:none;
+                    border: none;
                     cursor: pointer;
                 }
 
                 .right {
                     width: calc(50% - 170px);
-
                 }
             }
         }
+
+        .searchContainerFluid {
+            width: 100%;
+
+            .searchContainer {
+                width: 90%;
+            }
+
+            .trendingTitleFluid {
+                background-color: #dadada;
+                padding: 3px;
+                .trendingTitle {
+                    width: 90%;
+                    .icon {
+                        font-size: 26px;
+                    }
+
+                    .title {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .trendingSearchFluid {
+                .trendingSearch {
+                    .trendingItem {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+
         .menuMobileContainer {
             width: 90%;
             height: 100vh;
             position: absolute;
             left: -90%;
-            background-color: rgb(23,54,79);
+            background-color: rgb(23, 54, 79);
             padding-left: 20px;
-            color  :white;
-            transition: left .5s ease;
+            color: white;
+            transition: left 0.5s ease;
             display: block;
+            z-index: 10;
 
             .clear {
                 height: 10px;
-            }   
+            }
 
             .title {
                 background-color: transparent;
-                border:none;
+                border: none;
                 font-size: 17px;
-                color : white;
-                margin: 15px 0 5px; 
+                color: white;
+                margin: 15px 0 5px;
                 font-weight: 800;
             }
 
@@ -128,7 +278,7 @@
                 list-style: none;
 
                 .childItem {
-                    margin : 10px 0;
+                    margin: 10px 0;
                     font-size: 16px;
                 }
             }
@@ -136,7 +286,7 @@
 
         .isActive {
             left: 0;
-            transition: left .5s ease;
+            transition: left 0.5s ease;
         }
     }
 }

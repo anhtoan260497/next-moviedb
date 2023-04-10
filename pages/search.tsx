@@ -14,7 +14,6 @@ function search( props : searchData) {
     const router = useRouter()
     const type = router.query.type
     const currentPage = router.query.page
-    console.log(props)
 
     useEffect(() => {
         dispatch(setSearchResult(props))

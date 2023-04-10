@@ -6,6 +6,7 @@
     background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0.5);
     position: relative;
+    margin-top: 64px;
 
     .background {
         background-color: rgba(31.5, 31.5, 31.5, 0.7);
@@ -153,6 +154,9 @@
 }
 
 @media only screen and (max-width : 768px) {
+    .containerFluid {
+        margin-top: 0;
+    }
     .imageMobile {
         display: block;
         height: 240px;
