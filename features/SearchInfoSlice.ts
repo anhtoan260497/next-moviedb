@@ -4,36 +4,50 @@ import getSearch from "@/api/getSearch";
 
 export interface SearchInfoSlice {
   searchResult: searchData;
+  trendingResult : MovieInfo[]
   filter: string;
   totalPages: number;
   currentPage: number;
-  isLoadingChangeFilter : boolean
+  isLoadingChangeFilter: boolean;
 }
 
 export interface searchData {
-  [key:string] : SearchItem
+  [key: string]: SearchItem;
 }
 
 export interface SearchItem {
-  type : string,
-  data : MovieInfo[],
-  totalPages : number,
-  totalResults : number
+  type: string;
+  data: MovieInfo[];
+  totalPages: number;
+  totalResults: number;
 }
 
 const initialState: SearchInfoSlice = {
   searchResult: {},
+  trendingResult : [],
   filter: "movie",
   totalPages: 1,
   currentPage: 1,
-  isLoadingChangeFilter : false,
+  isLoadingChangeFilter: false,
 };
 
 export interface ParamsGetSearchMovies {
   page: number;
-  search ?: string | string[];
+  search?: string | string[];
 }
 
+export const getTrendingTitle = createAsyncThunk(
+  "SearchInfo/Trending",
+  async () => {
+    try {
+      const result = await getSearch.getTrendingTitle()
+      console.log(result)
+      return result.data.results;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
 
 export const searchInfoSlice = createSlice({
   name: "SearchInfo",
@@ -44,8 +58,8 @@ export const searchInfoSlice = createSlice({
     },
     setFilter: (state, action) => {
       state.filter = action.payload;
-      state.isLoadingChangeFilter = true
-      state.isLoadingChangeFilter = false
+      state.isLoadingChangeFilter = true;
+      state.isLoadingChangeFilter = false;
     },
     setTotalPages: (state, action) => {
       state.totalPages = action.payload;
@@ -53,6 +67,17 @@ export const searchInfoSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = parseInt(action.payload);
     },
+  },
+  extraReducers : builder => {
+    builder.addCase(getTrendingTitle.pending, () => {
+
+    });
+    builder.addCase(getTrendingTitle.rejected, () => {
+
+    });
+    builder.addCase(getTrendingTitle.fulfilled, (state,action) => {
+      state.trendingResult = action.payload
+    });
   },
 });
 

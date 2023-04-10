@@ -1,6 +1,6 @@
 import React from 'react';
 import MovieDetailHeader from '@/components/MovieDetailHeader/MovieDetailHeader';
-import { GetStaticProps, GetStaticPaths, GetStaticPropsContext, GetServerSideProps, GetServerSidePropsContext } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head'
 import { setMovieInfo } from '@/features/MovieInfoSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import { RootState } from '@/store/store';
 import MovieDetailContent from '@/components/MovieDetailContent/MovieDetailContent';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useRouter } from 'next/router';
-import CollectionDetailHeader from '@/components/CollectionDetailHeader/CollectionDetailHeader';
+import CollectionDetailHeader from '@/components/CastSlide/CollectionDetailHeader/CollectionDetailHeader';
 import CollectionDetailContent from '@/components/CollectionDetailContent/CollectionDetailContent';
 
 function MovieDetail(props: any) {

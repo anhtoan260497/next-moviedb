@@ -5,6 +5,7 @@ import ModalVideo from '@/components/ModalVideo/ModalVideo'
 import { RootState } from '@/store/store'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
 
@@ -67,7 +68,6 @@ export default function Home({ dataMovieList }: dataProps) {
       <HomepageSlideOptions type='trending' options={firstSlideOptions} title={'Trending'} />
       <HomepageTrailers />
       <HomepageSlideOptions type='popular' options={secondSlideOptions} title={"What's Popular"} />
-
       {modalTrailers && <ModalVideo />}
     </>
   )
