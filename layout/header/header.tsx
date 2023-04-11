@@ -208,6 +208,7 @@ const Header = () => {
           <div className={styles.inputContainer}>
             <Icon className={styles.icon} component={SearchIcon} />
             <input onFocus={handleFocusInputSearch} onBlur={handleBlurInputSearch} className={styles.inputField} onChange={e => handleChangeInputSearch(e)} value={inputSearch} placeholder="Search for a movie, tv show, person..." />
+            { inputSearch && <Icon className={styles.closeIcon} onClick={() => setInputSearch('')} component={CloseIcon}  />}
           </div>
         </form>
 
