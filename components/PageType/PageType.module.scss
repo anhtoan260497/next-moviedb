@@ -1,0 +1,22 @@
+.containerFluid {
+    margin-top: 64px;
+    position: relative;
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        min-height: 100vh;
+        margin : auto;
+        padding : 10px 0;
+
+        .title {
+            font-size: 26px;
+            font-weight: 600;
+        }
+
+        .pageContent {
+            display: flex;
+            gap : 20px;
+        }
+    }
+}
