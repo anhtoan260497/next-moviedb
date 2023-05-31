@@ -12,7 +12,7 @@ interface MovieItemProps {
     date : string
     type : string,
     id : number
-    pageType : boolean,
+    pageType ?: boolean,
 }
 
 function MovieItem({ poster, voteAverage, name, date,type = 'tv' , id, pageType =  false}: MovieItemProps) {
