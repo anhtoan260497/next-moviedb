@@ -19,30 +19,30 @@ const Header = () => {
   const menu = [{
     id: 0,
     name: 'Movies',
-    path: '/movies',
+    path: '/movie/popular',
     children: [{
       name: 'Popular',
-      path: '/popular'
+      path: '/movie/popular'
     }, {
       name: 'Now Playing',
-      path: '/now-playing'
+      path: '/movie/now-playing'
     }, {
       name: 'Upcoming',
-      path: '/upcoming'
+      path: '/movie/upcoming'
     }, {
       name: 'Top Rated',
-      path: '/toprated'
+      path: '/movie/top-rated'
     }]
   }, {
     id: 1,
     name: 'TV Shows',
-    path: '/tvshows',
+    path: '/tv/popular',
     children: [{
       name: 'Popular',
-      path: '/tv'
+      path: '/tv/popular'
     }, {
       name: 'Airing Today',
-      path: '/tv/airing-today'
+      path: '/tv/airing'
     }, {
       name: 'on TV',
       path: '/tv/on-the-air'
@@ -96,7 +96,7 @@ const Header = () => {
           <a className={styles.menuItemTitle} onMouseEnter={() => setHoverItem(item.id)}>{item.name}</a>
           {hoverItem === item.id ? <ul className={styles.menuChildItemList} onMouseEnter={() => setHoverItem(item.id)} onMouseLeave={() => setHoverItem(-1)}>
             {item.children.map((childItem) => {
-              return <li className={styles.menuChildItem} key={childItem.name}><a>{childItem.name}</a></li>
+              return <a href={childItem.path} className={styles.menuChildItem} key={childItem.name}><a>{childItem.name}</a></a>
             })}
           </ul> : ''}
         </div>
