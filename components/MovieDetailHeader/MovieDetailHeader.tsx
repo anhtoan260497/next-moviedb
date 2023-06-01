@@ -14,7 +14,7 @@ import clsx from 'clsx';
 
 function MovieDetailHeader() {
     const movieInfoData = useSelector<RootState, MovieInfo>(state => state.movieInfoSlice.info)
-    const { backdrop_path, poster_path, original_title = '', original_name = '', original_language, first_air_date, episode_run_time = [],
+    const { backdrop_path, poster_path, original_title = '', original_name = '',name='', original_language, first_air_date, episode_run_time = [],
         adult, release_date, genres, runtime = 0, vote_average = 0, overview, tagline, id, origin_country = [] } = movieInfoData
     const trailerVideo = useSelector<RootState, VideoItem>(state => state.movieInfoSlice.trailer)
     const crews = useSelector<RootState, CrewItem[]>(state => state.movieInfoSlice.crew)
@@ -63,6 +63,7 @@ function MovieDetailHeader() {
 
         dispatch(setModalTrailers(true))
     }
+    console.log(movieInfoData)
 
     return (
         <>
@@ -74,7 +75,7 @@ function MovieDetailHeader() {
                 <div className={styles.container}>
                     <Image className={styles.poster} src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2${poster_path}`} alt={original_title} width={300} height={450} />
                     <div className={styles.movieInfoContainer}>
-                        <h1>{original_title || original_name}</h1>
+                        <h1>{name || original_title || original_name}</h1>
                         <div className={styles.info}>
                             <div className={styles.certification}>{adult ? 'M' : 'PG-13'}</div>
                             •<p className={styles.languages}>{release_date || first_air_date} {`(${origin_country[0] || original_language})`}</p>
