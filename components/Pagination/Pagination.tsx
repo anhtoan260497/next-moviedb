@@ -32,7 +32,7 @@ function PaginationComp() {
     useEffect(() => {
         const resultArr = Object.values(searchResult)
         const result = resultArr.filter(item => item.type === filter)
-        if (result.length > 0) setIsShowPagination(false)
+        if (result.length === 0) setIsShowPagination(false)
     }, [])
 
     return (
