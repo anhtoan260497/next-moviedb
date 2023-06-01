@@ -16,8 +16,6 @@ function PaginationComp() {
     const [isShowPagination, setIsShowPagination] = useState<boolean>(true)
     const  [isDisabled,setIsDisabled] = useState<boolean>(false)
 
-    console.log(router.query)
-
     const createLinkPagination = (pageNumber: number) => {
         const query = router.query.query
         return `/search?query=${query}&page=${pageNumber}&type=${type}`
@@ -32,8 +30,12 @@ function PaginationComp() {
     useEffect(() => {
         const resultArr = Object.values(searchResult)
         const result = resultArr.filter(item => item.type === filter)
-        if (result.length === 0) setIsShowPagination(false)
-    }, [])
+        if (result.length === 0) {
+            setIsShowPagination(false)
+        } else {
+            setIsShowPagination(true)
+        }
+    }, [searchResult])
 
     return (
         <div className={styles.container}>
