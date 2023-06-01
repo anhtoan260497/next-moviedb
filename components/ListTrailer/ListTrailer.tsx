@@ -12,7 +12,7 @@ function ListTrailer() {
 
     const renderTrailerItem = () => {
         if (typeOfTrailer === '' || Object.keys(trailerItems).length === 0) return
-        return trailerItems[typeOfTrailer].map((item: TrailerItems) => <TrailerItem key={item.id} poster_path={item.poster_path} name={item.name} video_name={item.video_name} path={item.path} id={item.id} />)
+        return trailerItems[typeOfTrailer].map((item: TrailerItems) => <TrailerItem key={item.id} poster_path={item.poster_path} name={item.name} video_name={item.video_name} path={item.path} id={item.id} type={typeOfTrailer} />)
     }
 
     useEffect(() => {

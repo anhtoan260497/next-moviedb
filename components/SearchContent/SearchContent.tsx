@@ -1,5 +1,5 @@
 import React from 'react';
-import Pagination from '../Pagination/Pagination';
+import PaginationComp from '../Pagination/Pagination';
 import SearchFilter from '../SearchFilter/SearchFilter';
 import SearchResult from '../SearchResult/SearchResult';
 import styles from './SearchContent.module.scss'
@@ -10,7 +10,7 @@ function SearchContent() {
             <SearchFilter />
             <SearchResult />
         </div>
-        <Pagination />
+        <PaginationComp/>
     </>
     );
 }

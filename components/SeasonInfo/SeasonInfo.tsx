@@ -13,8 +13,6 @@ function SeasonInfo() {
             return premieredString(info.first_air_date || '2023/01/01', info.original_name || '', info?.seasons?.[0]?.name || '')
     }
 
-    console.log(info)
-
     return (
         <div className={styles.container}>
             <p className={styles.title}>Current Season</p>

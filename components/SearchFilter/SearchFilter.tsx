@@ -1,4 +1,4 @@
-import { searchData, SearchItem, setFilter, setTotalPages } from '@/features/SearchInfoSlice';
+import { searchData, SearchItem, setFilter, setIsLoading, setTotalPages } from '@/features/SearchInfoSlice';
 import { RootState } from '@/store/store';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
@@ -21,7 +21,10 @@ function SearchFilter() {
 
     const handleChangeOption = (option: string) => {
         dispatch(setFilter(option))
-        dispatch(setTotalPages(searchResult[filter].totalPages))
+        setTimeout(() => {
+            dispatch(setIsLoading(false))
+        }, 1000); 
+        dispatch(setTotalPages(searchResult[option].totalPages))
     }
 
     const createLinkFilter = (filter: string) => {

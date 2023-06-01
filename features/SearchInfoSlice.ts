@@ -59,6 +59,8 @@ export const searchInfoSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
       state.isLoadingChangeFilter = true;
+    },
+    setIsLoading: (state,action) => {
       state.isLoadingChangeFilter = false;
     },
     setTotalPages: (state, action) => {
@@ -81,6 +83,6 @@ export const searchInfoSlice = createSlice({
   },
 });
 
-export const { setSearchResult, setFilter, setTotalPages, setCurrentPage } =
+export const { setSearchResult, setFilter, setTotalPages, setCurrentPage, setIsLoading } =
   searchInfoSlice.actions;
 export default searchInfoSlice.reducer;

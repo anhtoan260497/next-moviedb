@@ -19,14 +19,15 @@ function SearchResult() {
         const result = resultArr.filter(item => item.type === filter)
         if(result.length > 0 ) setResult(result[0].data)
     }, [searchResult,filter])
-    console.log(result);
 
     const renderSearchItem = () => {
+        if(result.length === 0 ) return <h3>No Result</h3> 
         return result.map((item, key) => <SearchItem key={key} original_name={item.name}
             original_title={item.title} release_date={item.release_date} first_air_date={item.first_air_date}
             overview={item.overview} poster_path={item.poster_path} type={filter} id={item.id}
         />)
     }
+    console.log(isLoading)
 
     return (
         <div className={styles.container}>
