@@ -9,7 +9,7 @@ import { RootState } from '@/store/store';
 import MovieDetailContent from '@/components/MovieDetailContent/MovieDetailContent';
 import { ThunkDispatch } from '@reduxjs/toolkit';
 import { useRouter } from 'next/router';
-import CollectionDetailHeader from '@/components/CastSlide/CollectionDetailHeader/CollectionDetailHeader';
+import CollectionDetailHeader from '@/components/CollectionDetailHeader/CollectionDetailHeader';
 import CollectionDetailContent from '@/components/CollectionDetailContent/CollectionDetailContent';
 import PageType from '@/components/PageType/PageType';
 import { setCurrentPage, setListMovie } from '@/features/PageTypeSlice';
@@ -22,11 +22,7 @@ function MovieDetail(props: any) {
     const modalTrailers = useSelector<RootState, boolean>(state => state.movieSlice.isModalTrailers)
     const type = router.query.type
 
-    console.log(router.query.id)
-    console.log((router.query.id as string).charAt(0).toUpperCase() + (router.query.id as string)?.slice(1).replaceAll('-', "&nbsp;"))
-
     useEffect(() => {
-        console.log(!props?.data?.id && !isTypePage)
         if (!props?.data?.id && !isTypePage) return
         
         if (props?.data?.id && !isTypePage) {
@@ -35,11 +31,9 @@ function MovieDetail(props: any) {
         }
 
         if( isTypePage) {
-            console.log(props.data)
             dispatch(setListMovie(props.data.results)) 
             setCurrentPage(props.data.page)
         }
-       
     }, [])
 
 
@@ -67,11 +61,9 @@ export default MovieDetail;
 export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSidePropsContext) => {
     const { type, id }: any = ctx.params
     if (isNaN(parseInt(id))) {
-        console.log('id',id)
         const page = ctx?.query?.page || 1
         const respone = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}${type}/${id.replaceAll('-','_')}?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=${page || 1}`)
         const result = await respone.json()
-        console.log(result)
         return {
             props: {
                 data: result,

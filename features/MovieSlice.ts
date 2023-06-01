@@ -13,7 +13,8 @@ export interface TrailerItems {
       name: string,
       video_name: string,
       id: string,
-      path : string
+      path : string,
+      type : string,
 }
 
 export interface TrailersHomePage {
@@ -52,14 +53,16 @@ const initialState: MovieSliceState = {
       name: '',
       video_name: '',
       id: '',
-      path : ''
+      path : '',
+      type : ''
     }],
     movies : [{
       poster_path: '',
       name: '',
       video_name: '',
       id: '',
-      path : ''
+      path : '',
+      type : ''
     }]
   },
   hoverTrailerItem : {
@@ -67,14 +70,16 @@ const initialState: MovieSliceState = {
     name: '',
     video_name: '',
     id: '',
-    path : ''
+    path : '',
+    type : ''
   },
   choosingTrailer : {
     poster_path: '',
     name: '',
     video_name: '',
     id: '',
-    path : ''
+    path : '',
+    type : ''
   }
 };
 

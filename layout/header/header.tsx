@@ -138,7 +138,6 @@ const Header = () => {
       setIsFocusSearch(false)
     }
     setIsClickTrendingItem(true)
-    console.log(params)
     if (params) window.location.href = (`/search?query=${params}&page=1&type=movie`)
     setIsFocusSearch(false)
   }

@@ -1,6 +1,6 @@
 import SearchContent from '@/components/SearchContent/SearchContent';
 import { MovieInfo } from '@/features/MovieInfoSlice';
-import { searchData, SearchItem, setCurrentPage, setFilter, setSearchResult, setTotalPages } from '@/features/SearchInfoSlice';
+import { searchData, SearchItem, setCurrentPage, setFilter, setIsLoading, setSearchResult, setTotalPages } from '@/features/SearchInfoSlice';
 import { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -18,6 +18,7 @@ function search( props : searchData) {
     useEffect(() => {
         dispatch(setSearchResult(props))
         dispatch(setFilter(router.query.type))
+        dispatch(setIsLoading(false))
         dispatch(setTotalPages(props[(type as string)].totalPages))
         dispatch(setCurrentPage(currentPage))
     }, [])
@@ -46,7 +47,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: GetServerSideP
         try {
             const result = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_MOVIEDB}search/${type[i]}?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&include_adult=false&query=${query}&page=${currentPage}`)
             const data = await result.json()
-            console.log(data)
+
             propsData[type[i]] = {
                 type : type[i],
                 totalPages : data.total_pages,
