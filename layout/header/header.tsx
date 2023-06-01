@@ -42,7 +42,7 @@ const Header = () => {
       path: '/tv/popular'
     }, {
       name: 'Airing Today',
-      path: '/tv/airing'
+      path: '/tv/airing-today'
     }, {
       name: 'on TV',
       path: '/tv/on-the-air'
@@ -56,7 +56,7 @@ const Header = () => {
     path: '/persion',
     children: [{
       name: 'Popular People',
-      path: '/popularpeople'
+      path: 'https://www.themoviedb.org/person'
     }]
   }, {
     id: 3,
@@ -64,16 +64,16 @@ const Header = () => {
     path: '/more',
     children: [{
       name: 'Discussion',
-      path: '/discuss'
+      path: 'https://www.themoviedb.org/discuss'
     }, {
       name: 'Leaderboard',
-      path: '/leaderboard'
+      path: 'https://www.themoviedb.org/leaderboard'
     }, {
       name: 'Support',
-      path: '/talk'
+      path: 'https://www.themoviedb.org/talk'
     }, {
       name: 'API',
-      path: '/api'
+      path: 'https://developer.themoviedb.org/docs'
     }]
   }]
 

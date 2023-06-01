@@ -12,7 +12,7 @@ function Recommendations({}) {
         return recommendationFilms.map((item, key) => {
             return (
                 <RecommendationItem key={key} media_type={item.media_type || 'tv'} id={item.id}
-                    backdrop_path={item.backdrop_path} poster_path={item.poster_path} title={item.title || item.original_name}
+                    backdrop_path={item.backdrop_path} poster_path={item.poster_path} title={item.name || item.title || item.original_name}
                     vote_average={item.vote_average} first_air_date={item.first_air_date} release_date={item.release_date} />
             )
         })
