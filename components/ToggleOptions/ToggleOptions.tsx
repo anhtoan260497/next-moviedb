@@ -1,4 +1,4 @@
-import { getPopular, getTrailers, getTrending } from "@/features/MovieSlice";
+import { getPopular, getTrending } from "@/features/MovieSlice";
 import { setChooseStore } from "@/features/ToggleSlice";
 import { MovieList } from "@/pages";
 import { RootState } from "@/store/store";
@@ -30,7 +30,7 @@ const ToggleOptions = ({ options, type, isTrailerToggle }: Options) => {
         }
 
         if(type === 'trailers'){
-            dispatch(getTrailers())
+            // dispatch(getTrailers())
             dispatch(setChooseStore({ type, value: options[0].id }))
         }
     }, [])

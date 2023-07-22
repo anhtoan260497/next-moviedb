@@ -21,3 +21,29 @@
         }
     }
 }
+
+@media only screen and (max-width : 1199px) {
+    .containerFluid {
+        padding : 0 2%;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    .containerFluid {
+     
+    
+        .container {
+    
+            .title {
+                font-size: 26px;
+                font-weight: 600;
+            }
+    
+            .pageContent {
+                display: block;
+                gap : 20px;
+                margin-bottom : 120px;
+            }
+        }
+    }
+}

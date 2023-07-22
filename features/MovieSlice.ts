@@ -107,16 +107,16 @@ export const getPopular = createAsyncThunk(
   }
 );
 
-export const getTrailers = createAsyncThunk("Movie/Trailers", async (type) => {
-  try {
-    const result = await axios.get(
-      "https://api.cpsi.services/5bc735214e4a0c781fa0"
-    );
-      return result.data
-  } catch (err) {
-    console.log(err);
-  }
-});
+// export const getTrailers = createAsyncThunk("Movie/Trailers", async (type) => {
+//   try {
+//     const result = await axios.get(
+//       "https://api.cpsi.services/5bc735214e4a0c781fa0"
+//     );
+//       return result.data
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 export const movieSlice = createSlice({
   name: "MovieSlice",
@@ -156,17 +156,17 @@ export const movieSlice = createSlice({
         state.isLoadingPopular = false;
         state.popular = action.payload.filter((item:MovieList)=>item.vote_average !== 0);
       });
-      builder.addCase(getTrailers.pending,(state) => {
-        state.isLoadingTrailer = true
-      }),
-      builder.addCase(getTrailers.rejected,(state) => {
-        state.isLoadingTrailer = false
-        state.isErrorTrailer =  true
-      }),
-      builder.addCase(getTrailers.fulfilled,(state,action) => {
-        state.isLoadingTrailer = false
-        state.trailers = action.payload
-      })
+      // builder.addCase(getTrailers.pending,(state) => {
+      //   state.isLoadingTrailer = true
+      // }),
+      // builder.addCase(getTrailers.rejected,(state) => {
+      //   state.isLoadingTrailer = false
+      //   state.isErrorTrailer =  true
+      // }),
+      // builder.addCase(getTrailers.fulfilled,(state,action) => {
+      //   state.isLoadingTrailer = false
+      //   state.trailers = action.payload
+      // })
   },
 });
 
