@@ -188,6 +188,27 @@
     }
 }
 
+@media only screen and (max-width : 1199px) {
+    .containerFluid {
+        .container {
+            max-width: 1024px;
+            padding : 0 2%;
+        }
+    }
+}
+
+@media only screen and (max-width : 1024px) {
+    .containerFluid {
+        .container {
+            max-width: 96%;
+
+            .leftContainer {
+                width: calc((100% / 12) * 7);
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .containerFluid {
         position: fixed;

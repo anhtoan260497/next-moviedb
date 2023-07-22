@@ -27,7 +27,6 @@ function SearchResult() {
             overview={item.overview} poster_path={item.poster_path} type={filter} id={item.id}
         />)
     }
-    console.log(isLoading)
 
     return (
         <div className={styles.container}>

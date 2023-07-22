@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './FilterPageType.module.scss'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Icon } from '@mui/material';
+import { FormControl, Icon, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import clsx from 'clsx';
 
 function FilterPageType({ handleSetIsFocusSort, isFocusSort }: any) {
@@ -48,22 +48,28 @@ function FilterPageType({ handleSetIsFocusSort, isFocusSort }: any) {
         })
     }
 
-    const handleClickOption = (type:string) => {
-        const selectedFilter = filterList.filter(item => item.  typeFilter === type)
+    const handleClickOption = (type: string) => {
+        const selectedFilter = filterList.filter(item => item.typeFilter === type)
         setSelectedOption(selectedFilter[0])
     }
+
+    const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value);
+  };
 
     return (
         <div className={styles.container}>
             <div className={styles.sortFilterContainer}>
-                <div className={styles.sortTitle} onClick={() => setIsShowSort(!isShowSort) }>
+                <div className={styles.sortTitle} onClick={() => setIsShowSort(!isShowSort)}>
                     <p className={styles.title}>Sort</p>
-                    { !isShowSort ? <Icon className={styles.icon} component={KeyboardArrowRightIcon} /> : <Icon className={styles.icon} component={KeyboardArrowDownIcon} /> }
+                    {!isShowSort ? <Icon className={styles.icon} component={KeyboardArrowRightIcon} /> : <Icon className={styles.icon} component={KeyboardArrowDownIcon} />}
                 </div>
                 <div className={styles.clear}></div>
-                <div className={clsx(styles.sortContent,isShowSort && styles.active)}>
+                <div className={clsx(styles.sortContent, isShowSort && styles.active)}>
                     <p className={styles.title}>Sort result by</p>
-                    <div className={styles.sortContainer}>
+                    {/* <div className={styles.sortContainer}>
                         <div className={styles.sortSelect} onClick={() => handleSetIsFocusSort(!isFocusSort)}>
                             <p className={styles.sortSelectTitle}>{selectedOption.title}</p>
                             <Icon className={styles.icon} component={KeyboardArrowDownIcon} />
@@ -71,7 +77,24 @@ function FilterPageType({ handleSetIsFocusSort, isFocusSort }: any) {
                         {isFocusSort && <div className={styles.sortOptions}>
                             {renderOptionsSort()}
                         </div>}
-                    </div>
+                    </div> */}
+                    <FormControl fullWidth size="small">
+                        <InputLabel id="demo-select-small-label">Sort</InputLabel>
+                        <Select
+                            labelId="demo-select-small-label"
+                            id="demo-select-small"
+                            value={age}
+                            label={'sort'}
+                            onChange={handleChange}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+                            <MenuItem value={10}>Ten</MenuItem>
+                            <MenuItem value={20}>Twenty</MenuItem>
+                            <MenuItem value={30}>Thirty</MenuItem>
+                        </Select>
+                    </FormControl>
                 </div>
             </div>
         </div>
