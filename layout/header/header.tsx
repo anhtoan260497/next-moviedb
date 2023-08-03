@@ -87,12 +87,25 @@ const Header = () => {
   const [isClickTrendingItem, setIsClickTrendingItem] = useState(false)
   const [inputSearch,setInputSearch] = useState(router.query.query || '')
   const listTrending = useSelector<RootState, MovieInfo[] | []>(state => state.searchInfoSlice.trendingResult)
+  const [listTitleActive, setListTitleActive] = useState<string[]>([])
+
+  const handleClickMobileTitle = (title : string) => {
+     const idx = listTitleActive.findIndex(item => item === title)
+     const clone = [...listTitleActive]
+     if(idx < 0) {
+      clone.push(title)
+      setListTitleActive(clone)
+      return 
+     }
+     clone.splice(idx,1)
+     setListTitleActive(clone)
+  }
 
 
   const renderMenuItem = () => {
     return menu.map(item => {
       return (
-        <div className={styles.menuItem} key={item.id}>
+        <div className={styles.menuItem} key={item.name}>
           <a className={styles.menuItemTitle} onMouseEnter={() => setHoverItem(item.id)}>{item.name}</a>
           {hoverItem === item.id ? <ul className={styles.menuChildItemList} onMouseEnter={() => setHoverItem(item.id)} onMouseLeave={() => setHoverItem(-1)}>
             {item.children.map((childItem) => {
@@ -104,14 +117,16 @@ const Header = () => {
     })
   }
 
+  console.log(listTitleActive)
+
   const renderMenuItemMobile = () => {
     return menu.map(item => {
       return (
         <div className={styles.options} key={item.id}>
-          <button className={styles.title}>{item.name}</button>
-          <ul className={styles.listChildItem}>
-            {item.children.map((childItem, key) => <li className={styles.childItem} key={key}>{childItem.name}</li>)}
-          </ul>
+          <button onClick={() => handleClickMobileTitle(item.name)} className={styles.title}>{item.name}</button>
+          {listTitleActive.includes(item.name) && <ul className={styles.listChildItem} >
+            {item.children.map((childItem, key) => <a href={childItem.path} className={styles.childItem} key={key}>{childItem.name}</a>)}
+          </ul>}
         </div>
       )
     })
