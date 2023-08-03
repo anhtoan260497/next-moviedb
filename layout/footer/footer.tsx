@@ -7,69 +7,69 @@ const Footer = () => {
         name: 'THE BASICS',
         children: [{
             name: 'About TMDB',
-            link: ''
+            link: 'https://www.themoviedb.org/about'
         },
         {
             name: 'Contact Us',
-            link: ''
+            link: 'https://www.themoviedb.org/about/staying-in-touch'
         },
         {
             name: 'Support Forums',
-            link: ''
+            link: 'themoviedb.org/talk?language'
         },
         {
             name: 'API',
-            link: ''
+            link: 'https://developer.themoviedb.org/docs'
         },
         {
             name: 'System Status',
-            link: ''
+            link: 'https://status.themoviedb.org/'
         }]
     },
     {
         name: 'GET INVOLVED',
         children: [{
             name: 'Contribution Bible',
-            link: ''
+            link: 'https://www.themoviedb.org/bible'
         },
         {
             name: 'Add New Movie',
-            link: ''
+            link: 'https://www.themoviedb.org/movie/new'
         },
         {
             name: 'Add New TV Show',
-            link: ''
+            link: 'https://www.themoviedb.org/tv/new'
         }]
     }, {
         name: 'COMMUNITY',
         children: [{
             name: 'Guildlines',
-            link: ''
+            link: 'https://www.themoviedb.org/documentation/community/guidelines'
         },
         {
             name: 'Discussion',
-            link: ''
+            link: 'https://www.themoviedb.org/discuss'
         },
         {
             name: 'Leaderboard',
-            link: ''
+            link: 'https://www.themoviedb.org/leaderboard'
         }, {
             name: 'Twitter',
-            link: ''
+            link: 'https://twitter.com/themoviedb'
         }]
     }, {
         name: 'LEGAL',
         children: [{
             name: 'Term Of Use',
-            link: ''
+            link: 'https://www.themoviedb.org/terms-of-use'
         },
         {
             name: 'API Term Of Use',
-            link: ''
+            link: 'https://www.themoviedb.org/documentation/api/terms-of-use'
         },
         {
             name: 'Privacy Policy',
-            link: ''
+            link: 'https://www.themoviedb.org/privacy-policy'
         }]
     }]
 
@@ -79,7 +79,7 @@ const Footer = () => {
                 <a className={styles.footerItemTitle}>{item.name}</a>
                 <ul className={styles.footerItemList}>
                     {item.children.map(childItem =>
-                       {return <li className={styles.footerItem} key={childItem.name}>{childItem.name}</li>}
+                       {return <a href={childItem.link} className={styles.footerItem} key={childItem.name} target="_blank">{childItem.name}</a>}
                     )}
                 </ul>
             </div>
